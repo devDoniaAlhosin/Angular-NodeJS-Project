@@ -1,0 +1,19 @@
+.book-card {
+  cursor: pointer;
+}
+
+.book-cover {
+  transition: 0.3s all ease;
+}
+
+.book-card:hover .book-cover {
+  transform: scale(1.2);
+}
+
+.book-card .book-title {
+  transition: 0.3s all ease;
+}
+
+.book-card:hover .book-title {
+  color: var(--hover-color);
+}
