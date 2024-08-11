@@ -1,20 +1,50 @@
 [
   {
-    "cover": "https://example.com/cover1.jpg",
+    "cover": "https://images.pexels.com/photos/27439406/pexels-photo-27439406/free-photo-of-a-cup-of-coffee-sits-on-a-bed-with-pillows.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "title": "Book Title 1",
     "category": "Fiction",
     "author": "Author Name 1"
   },
   {
-    "cover": "https://example.com/cover2.jpg",
+    "cover": "https://images.pexels.com/photos/13812647/pexels-photo-13812647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "title": "Book Title 2",
     "category": "Non-Fiction",
     "author": "Author Name 2"
   },
   {
-    "cover": "https://example.com/cover3.jpg",
+    "cover": "https://images.pexels.com/photos/27354543/pexels-photo-27354543/free-photo-of-two-buildings-with-balconies-and-windows-in-the-city.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "title": "Book Title 3",
     "category": "Science",
     "author": "Author Name 3"
+  },
+  {
+    "cover": "https://images.pexels.com/photos/279077/pexels-photo-279077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Great Gatsby",
+    "category": "Fiction",
+    "author": "F. Scott Fitzgerald"
+  },
+  {
+    "cover": "https://images.pexels.com/photos/27439406/pexels-photo-27439406/free-photo-of-a-cup-of-coffee-sits-on-a-bed-with-pillows.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "To Kill a Mockingbird",
+    "category": "Fiction",
+    "author": "Harper Lee"
+  },
+  {
+    "cover": "https://images.pexels.com/photos/13812647/pexels-photo-13812647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "The Catcher in the Rye",
+    "category": "Fiction",
+    "author": "J.D. Salinger"
+  },
+  {
+    "cover": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "category": "Fiction",
+    "author": "Douglas Adams"
+  },
+  {
+    "cover": "https://images.pexels.com/photos/279077/pexels-photo-279077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Alchemist",
+    "category": "Fiction",
+    "author": "Paulo Coelho"
   }
 ]
