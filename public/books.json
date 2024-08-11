@@ -1,50 +1,148 @@
 [
   {
-    "cover": "https://images.pexels.com/photos/27439406/pexels-photo-27439406/free-photo-of-a-cup-of-coffee-sits-on-a-bed-with-pillows.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "title": "Book Title 1",
-    "category": "Fiction",
-    "author": "Author Name 1"
-  },
-  {
-    "cover": "https://images.pexels.com/photos/13812647/pexels-photo-13812647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "title": "Book Title 2",
-    "category": "Non-Fiction",
-    "author": "Author Name 2"
-  },
-  {
-    "cover": "https://images.pexels.com/photos/27354543/pexels-photo-27354543/free-photo-of-two-buildings-with-balconies-and-windows-in-the-city.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "title": "Book Title 3",
-    "category": "Science",
-    "author": "Author Name 3"
-  },
-  {
-    "cover": "https://images.pexels.com/photos/279077/pexels-photo-279077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "title": "The Great Gatsby",
-    "category": "Fiction",
-    "author": "F. Scott Fitzgerald"
-  },
-  {
+    "bookId": 1,
     "cover": "https://images.pexels.com/photos/27439406/pexels-photo-27439406/free-photo-of-a-cup-of-coffee-sits-on-a-bed-with-pillows.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "title": "To Kill a Mockingbird",
+    "description": "To Kill a Mockingbird is a novel by Harper Lee. It was published on 28 June 1960 by J. D. Salinger's publishers.",
     "category": "Fiction",
-    "author": "Harper Lee"
+    "author": "Harper Lee",
+    "rating": 5
   },
   {
+    "bookId": 2,
     "cover": "https://images.pexels.com/photos/13812647/pexels-photo-13812647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "title": "The Catcher in the Rye",
+    "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
     "category": "Fiction",
-    "author": "J.D. Salinger"
+    "author": "J.D. Salinger",
+    "rating": 4.5
   },
   {
+    "bookId": 3,
     "cover": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "title": "The Hitchhiker's Guide to the Galaxy",
+    "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
     "category": "Fiction",
-    "author": "Douglas Adams"
+    "author": "Douglas Adams",
+    "rating": 4.8
   },
   {
+    "bookId": 4,
     "cover": "https://images.pexels.com/photos/279077/pexels-photo-279077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "title": "The Alchemist",
+    "description": "The Alchemist is a novel by Paulo Coelho. It was first published in Portuguese as O Alquimista in 1988.",
     "category": "Fiction",
-    "author": "Paulo Coelho"
+    "author": "Paulo Coelho",
+    "rating": 4.7
+  },
+  {
+    "bookId": 5,
+    "cover": "https://images.pexels.com/photos/27439406/pexels-photo-27439406/free-photo-of-a-cup-of-coffee-sits-on-a-bed-with-pillows.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "To Kill a Mockingbird",
+    "description": "To Kill a Mockingbird is a novel by Harper Lee. It was published on 28 June 1960 by J. D. Salinger's publishers.",
+    "category": "Fiction",
+    "author": "Harper Lee",
+    "rating": 5
+  },
+  {
+    "bookId": 6,
+    "cover": "https://images.pexels.com/photos/13812647/pexels-photo-13812647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "The Catcher in the Rye",
+    "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
+    "category": "Fiction",
+    "author": "J.D. Salinger",
+    "rating": 4.5
+  },
+  {
+    "bookId": 7,
+    "cover": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
+    "category": "Fiction",
+    "author": "Douglas Adams",
+    "rating": 4.8
+  },
+  {
+    "bookId": 8,
+    "cover": "https://images.pexels.com/photos/279077/pexels-photo-279077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Alchemist",
+    "description": "The Alchemist is a novel by Paulo Coelho. It was first published in Portuguese as O Alquimista in 1988.",
+    "category": "Fiction",
+    "author": "Paulo Coelho",
+    "rating": 4.7
+  },
+  {
+    "bookId": 9,
+    "cover": "https://images.pexels.com/photos/27439406/pexels-photo-27439406/free-photo-of-a-cup-of-coffee-sits-on-a-bed-with-pillows.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "To Kill a Mockingbird",
+    "description": "To Kill a Mockingbird is a novel by Harper Lee. It was published on 28 June 1960 by J. D. Salinger's publishers.",
+    "category": "Fiction",
+    "author": "Harper Lee",
+    "rating": 5
+  },
+  {
+    "bookId": 10,
+    "cover": "https://images.pexels.com/photos/13812647/pexels-photo-13812647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "The Catcher in the Rye",
+    "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
+    "category": "Fiction",
+    "author": "J.D. Salinger",
+    "rating": 4.5
+  },
+  {
+    "bookId": 11,
+    "cover": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
+    "category": "Fiction",
+    "author": "Douglas Adams",
+    "rating": 4
+  },
+  {
+    "bookId": 12,
+    "cover": "https://images.pexels.com/photos/279077/pexels-photo-279077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Alchemist",
+    "description": "The Alchemist is a novel by Paulo Coelho. It was first published in Portuguese as O Alquimista in 1988.",
+    "category": "Fiction",
+    "author": "Paulo Coelho",
+    "rating": 4.7
+  },
+  {
+    "bookId": 13,
+    "cover": "https://images.pexels.com/photos/27439406/pexels-photo-27439406/free-photo-of-a-cup-of-coffee-sits-on-a-bed-with-pillows.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "Ulysses",
+    "description": "Ulysses is a novel by James Joyce. It was published on 19 June 1922 by Sylvia Beach's bookshop.",
+    "category": "Fiction",
+    "author": "James Joyce",
+    "rating": 1
+  },
+  {
+    "bookId": 14,
+    "cover": "https://images.pexels.com/photos/279077/pexels-photo-279077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
+    "category": "Fiction",
+    "author": "Douglas Adams",
+    "rating": 3
+  },
+  {
+    "bookId": 15,
+    "cover": "https://images.pexels.com/photos/13812647/pexels-photo-13812647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "title": "The Catcher in the Rye",
+    "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
+    "category": "Fiction",
+    "author": "J.D. Salinger",
+    "rating": 2
+  },
+  {
+    "bookId": 16,
+    "cover": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
+    "category": "Fiction",
+    "author": "Douglas Adams",
+    "rating": 4.8
   }
 ]
+
+

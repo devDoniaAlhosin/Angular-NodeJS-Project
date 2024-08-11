@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BooksService } from '../../../core/services/books/books.service';
 
 @Component({
   selector: 'app-book-view',
@@ -8,5 +9,23 @@ import { Component } from '@angular/core';
   styleUrl: './book-view.component.css'
 })
 export class BookViewComponent {
+  @Input() id: any;
+  books!:any;
+  book!:any;
+  constructor(
+    private booksService: BooksService
+  ) {}
 
+  ngOnInit(){
+    console.log(this.id);
+    this.booksService.getBooks().subscribe((res)=> {
+      this.books = res;
+      this.book = this.books.find((book: any) => book.bookId == this.id);
+      console.log(this.book);
+    })
+  }
+
+  getStarArray(rating: number): number[] {
+    return Array(Math.round(rating)).fill(0);
+  }
 }

@@ -1,1 +1,9 @@
-<p>book-view works!</p>
+<h1>{{book.author}}</h1>
+<div class="rating">
+  @for (rate of getStarArray(book.rating); track $index) {
+    <i class="bi bi-star-fill text-success"></i>
+  }
+  @for (rate of getStarArray(5 - book.rating); track $index) {
+    <i class="bi bi-star-fill text-secondary"></i>
+  }
+</div>
