@@ -6,7 +6,12 @@
     "description": "To Kill a Mockingbird is a novel by Harper Lee. It was published on 28 June 1960 by J. D. Salinger's publishers.",
     "category": "Fiction",
     "author": "Harper Lee",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 2,
@@ -15,7 +20,12 @@
     "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
     "category": "Fiction",
     "author": "J.D. Salinger",
-    "rating": 4.5
+    "rating": 4.5,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 3,
@@ -24,7 +34,12 @@
     "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
     "category": "Fiction",
     "author": "Douglas Adams",
-    "rating": 4.8
+    "rating": 3,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 4,
@@ -33,7 +48,12 @@
     "description": "The Alchemist is a novel by Paulo Coelho. It was first published in Portuguese as O Alquimista in 1988.",
     "category": "Fiction",
     "author": "Paulo Coelho",
-    "rating": 4.7
+    "rating": 4.7,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 5,
@@ -42,7 +62,12 @@
     "description": "To Kill a Mockingbird is a novel by Harper Lee. It was published on 28 June 1960 by J. D. Salinger's publishers.",
     "category": "Fiction",
     "author": "Harper Lee",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 6,
@@ -51,7 +76,12 @@
     "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
     "category": "Fiction",
     "author": "J.D. Salinger",
-    "rating": 4.5
+    "rating": 4.5,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 7,
@@ -60,7 +90,12 @@
     "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
     "category": "Fiction",
     "author": "Douglas Adams",
-    "rating": 4.8
+    "rating": 4.8,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 8,
@@ -69,7 +104,12 @@
     "description": "The Alchemist is a novel by Paulo Coelho. It was first published in Portuguese as O Alquimista in 1988.",
     "category": "Fiction",
     "author": "Paulo Coelho",
-    "rating": 4.7
+    "rating": 4.7,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 9,
@@ -78,7 +118,12 @@
     "description": "To Kill a Mockingbird is a novel by Harper Lee. It was published on 28 June 1960 by J. D. Salinger's publishers.",
     "category": "Fiction",
     "author": "Harper Lee",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 10,
@@ -87,7 +132,12 @@
     "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
     "category": "Fiction",
     "author": "J.D. Salinger",
-    "rating": 4.5
+    "rating": 4.5,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 11,
@@ -96,7 +146,12 @@
     "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
     "category": "Fiction",
     "author": "Douglas Adams",
-    "rating": 4
+    "rating": 4,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 12,
@@ -105,7 +160,12 @@
     "description": "The Alchemist is a novel by Paulo Coelho. It was first published in Portuguese as O Alquimista in 1988.",
     "category": "Fiction",
     "author": "Paulo Coelho",
-    "rating": 4.7
+    "rating": 4.7,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 13,
@@ -114,7 +174,12 @@
     "description": "Ulysses is a novel by James Joyce. It was published on 19 June 1922 by Sylvia Beach's bookshop.",
     "category": "Fiction",
     "author": "James Joyce",
-    "rating": 1
+    "rating": 1,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 14,
@@ -123,7 +188,12 @@
     "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
     "category": "Fiction",
     "author": "Douglas Adams",
-    "rating": 3
+    "rating": 3,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 15,
@@ -132,7 +202,12 @@
     "description": "The Catcher in the Rye is a novel by J.D. Salinger. It was published on 22 July 1951 by Little, Brown and Company.",
     "category": "Fiction",
     "author": "J.D. Salinger",
-    "rating": 2
+    "rating": 2,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   },
   {
     "bookId": 16,
@@ -141,8 +216,11 @@
     "description": "The Hitchhiker's Guide to the Galaxy is a science fiction comedy series created by Douglas Adams.",
     "category": "Fiction",
     "author": "Douglas Adams",
-    "rating": 4.8
+    "rating": 4.8,
+    "reviews": [
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    ]
   }
 ]
-
-

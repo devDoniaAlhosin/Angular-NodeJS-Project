@@ -1,9 +1,30 @@
-<h1>{{book.author}}</h1>
-<div class="rating">
-  @for (rate of getStarArray(book.rating); track $index) {
-    <i class="bi bi-star-fill text-success"></i>
-  }
-  @for (rate of getStarArray(5 - book.rating); track $index) {
-    <i class="bi bi-star-fill text-secondary"></i>
-  }
+<div class="container">
+  <div class="row">
+    <div class="book-cover col-3">
+      <img [src]="book.cover" alt="">
+    </div>
+    <div class="book-details col-9">
+      <h2 class="book-title">{{book.title}}</h2>
+      <h4 class="book-author" (click)="onAuthorClick(book.author)">{{book.author}}</h4>
+      <h4 class="book-category">{{book.category}}</h4>
+      <div class="rating d-flex ">
+        @for (rate of getStarArray(book.rating); track $index) {
+          <i class="bi bi-star-fill text-success"></i>
+        }
+        @for (rate of getStarArray(5 - book.rating); track $index) {
+          <i class="bi bi-star-fill text-secondary"></i>
+        }
+        <p class="ms-2">{{book.rating}} - 300 ratings</p>
+      </div>
+      <p class="book-description">{{book.description}}</p>
+    </div>
+    <div class="book-reviews col-12 mt-5 border rounded position-relative">
+      <h5 class="book-review-header border rounded">Reviews</h5>
+      <p>
+        @for(review of book.reviews; track review) {
+          "{{ review }}" <br><br>
+        }
+      </p>
+    </div>
+  </div>
 </div>

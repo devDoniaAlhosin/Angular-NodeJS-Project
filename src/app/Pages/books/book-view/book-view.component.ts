@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { BooksService } from '../../../core/services/books/books.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book-view',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './book-view.component.html',
   styleUrl: './book-view.component.css'
 })
@@ -27,5 +28,9 @@ export class BookViewComponent {
 
   getStarArray(rating: number): number[] {
     return Array(Math.round(rating)).fill(0);
+  }
+
+  onAuthorClick(author: string) {
+    console.log(author);
   }
 }
