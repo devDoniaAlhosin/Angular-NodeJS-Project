@@ -1,0 +1,20 @@
+[
+  {
+    "cover": "https://example.com/cover1.jpg",
+    "title": "Book Title 1",
+    "category": "Fiction",
+    "author": "Author Name 1"
+  },
+  {
+    "cover": "https://example.com/cover2.jpg",
+    "title": "Book Title 2",
+    "category": "Non-Fiction",
+    "author": "Author Name 2"
+  },
+  {
+    "cover": "https://example.com/cover3.jpg",
+    "title": "Book Title 3",
+    "category": "Science",
+    "author": "Author Name 3"
+  }
+]
