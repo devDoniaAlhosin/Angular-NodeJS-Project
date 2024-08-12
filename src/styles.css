@@ -45,7 +45,8 @@ ul {
 }
 
 /* pagination styling */
-.books-wrapper .ngx-pagination .current  {
+.books-wrapper .ngx-pagination .current,
+.authors-wrapper .ngx-pagination .current  {
   background: var(--hover-color);
   border-radius: 10px;
 }

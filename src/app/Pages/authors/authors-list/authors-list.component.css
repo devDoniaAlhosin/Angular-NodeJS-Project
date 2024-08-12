@@ -1,0 +1,19 @@
+
+.author-cover {
+  transition: 0.3s all ease;
+  cursor: pointer;
+}
+
+.author-card:hover .author-cover {
+  transform: scale(1.2);
+}
+
+.author-card .author-title {
+  transition: 0.3s all ease;
+  cursor: pointer;
+}
+
+.author-card:hover .author-title {
+  color: var(--hover-color);
+}
+
