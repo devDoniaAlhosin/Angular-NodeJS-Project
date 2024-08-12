@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="book-cover col-3">
+    <div class="book-cover col-lg-3 col-md-6 col-12 ">
       <img [src]="book.cover" alt="">
     </div>
-    <div class="book-details col-9">
+    <div class="book-details col-lg-9 col-md-6 col-12 p-lg-3 p-4">
       <h2 class="book-title">{{book.title}}</h2>
       <h4 class="book-author" (click)="onAuthorClick(book.author)">{{book.author}}</h4>
       <h4 class="book-category">{{book.category}}</h4>
