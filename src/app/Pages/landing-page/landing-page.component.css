@@ -527,3 +527,14 @@ body {
     box-shadow: 0 0 0 10px transparent;
   }
 }
+
+
+@media(max-width: 676px){
+    .login--container {
+      width:90%;
+      .login--contents {
+        width:100%;
+      }
+    }
+  
+}

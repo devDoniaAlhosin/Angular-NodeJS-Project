@@ -23,63 +23,77 @@
         </div>
         <div class="offcanvas-body justify-content-between">
           <ul class="navbar-nav justify-content-center flex-grow-4 px-5">
-            <li
-              class="nav-item"
-              [routerLinkActive]="'active'"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              <a class="nav-link" aria-current="page" routerLink="/">Home</a>
-            </li>
-            <!-- <li class="nav-item" [routerLinkActive]="'active'">
-              <a class="nav-link" aria-current="page" routerLink="/categories"
-                >Categories</a
+            <!-- Conditional Links Based on Login Status -->
+            <ng-container *ngIf="isLoggedIn(); else showLoginRegister">
+              <li
+                class="nav-item"
+                [routerLinkActive]="'active'"
+                [routerLinkActiveOptions]="{ exact: true }"
               >
-            </li>
-            <li class="nav-item" [routerLinkActive]="'active'">
-              <a class="nav-link" aria-current="page" routerLink="/books"
-                >Books</a
-              >
-            </li> -->
-            <li class="nav-item" [routerLinkActive]="'active'">
-              <a class="nav-link" aria-current="page" routerLink="/login"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item" [routerLinkActive]="'active'">
-              <a class="nav-link" aria-current="page" routerLink="/register"
-                >Register</a
-              >
-            </li>
+                <a class="nav-link" aria-current="page" routerLink="/home"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item" [routerLinkActive]="'active'">
+                <a class="nav-link" aria-current="page" routerLink="/categories"
+                  >Categories</a
+                >
+              </li>
+              <li class="nav-item" [routerLinkActive]="'active'">
+                <a class="nav-link" aria-current="page" routerLink="/books"
+                  >Books</a
+                >
+              </li>
+              <li class="nav-item" [routerLinkActive]="'active'">
+                <a class="nav-link" aria-current="page" routerLink="/authers"
+                  >Authers</a
+                >
+              </li>
+
+              <!-- User Account Section -->
+
+              <!-- Search Container -->
+              <div class="search-container px-2">
+                <form class="d-flex" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="search--btn btn" type="submit">Search</button>
+                </form>
+              </div>
+              <li class="nav-item d-flex align-items-center sec---user">
+                <fa-icon [icon]="faUser" class="me-2 fs-5"></fa-icon>
+                <span>{{ username }}</span>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <a class="" (click)="logout()">
+                  <fa-icon
+              
+                    [icon]="faRightFromBracket"
+                    class="me-2 fs-4"
+                    (click)="logout()"
+                  ></fa-icon
+                ></a>
+              </li>
+            </ng-container>
+
+            <!-- Login and Register -->
+            <ng-template #showLoginRegister>
+              <li class="nav-item" [routerLinkActive]="'active'">
+                <a class="nav-link" aria-current="page" routerLink="/login"
+                  >Login</a
+                >
+              </li>
+              <li class="nav-item" [routerLinkActive]="'active'">
+                <a class="nav-link" aria-current="page" routerLink="/register"
+                  >Register</a
+                >
+              </li>
+            </ng-template>
           </ul>
-          <div class="search-container px-2">
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="search--btn btn" type="submit">Search</button>
-            </form>
-          </div>
-
-          <!-- <div class="nav navbar-nav nav-right">
-            <li class="nav-link"><a [routerLink]="/login">Login</a></li>
-            <li><a [routerLink]="/register">Register </a></li>
-          </div> -->
-
-          <!-- <div class="right--account d-flex gap-4 flex-grow-4 px-5 py-1">
-            <div class="user--account d-flex gap-2 text-center icon--hover">
-              <fa-icon class="fs-5" [icon]="faUser"></fa-icon>
-              <span>User 1</span>
-            </div>
-            <div class="account-logout text-center">
-              <fa-icon
-                class="fs-5 icon--hover"
-                [icon]="faRightFromBracket"
-              ></fa-icon>
-            </div>
-          </div> -->
         </div>
       </div>
 

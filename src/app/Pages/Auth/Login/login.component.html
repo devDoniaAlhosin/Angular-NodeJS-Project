@@ -1,3 +1,4 @@
+<!-- login.component.html -->
 <section class="login--Section">
   <div class="login--container">
     <form
@@ -7,9 +8,13 @@
     >
       <h2 class="form-title">Login To GoodReads</h2>
 
+      <!-- Display error message -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
       <!-- Username Field -->
       <div class="mb-3">
-        <!-- 4 characters and only allows alphanumeric characters (letters and numbers). -->
         <label for="username" class="form-label">Username</label>
         <input
           type="text"
@@ -94,7 +99,7 @@
     </form>
 
     <div class="dont--have-acount">
-      <h6>Dont Have an Account? <a routerLink="/register">Register</a></h6>
+      <h6>Don't Have an Account? <a routerLink="/register">Register</a></h6>
     </div>
   </div>
   <div class="footer-image">
