@@ -1,1 +1,71 @@
-<p>landing-page works!</p>
+<!-- Hero Section  -->
+<div class="header--container">
+  <div class="container login--container">
+    <div class="login--contents">
+      <div class="newAccountBox">
+        <h2>Discover & read more</h2>
+        <div class="contaainer--btns">
+          <button class="btn btn--common btn-amazon">
+            <a href="">
+              <fa-icon [icon]="faAmazon"></fa-icon>Continue with Amazon
+            </a>
+          </button>
+          <button class="btn btn--common">
+            <a href="">
+              <fa-icon [icon]="faApple"></fa-icon>Continue with Apple
+            </a>
+          </button>
+          <button class="btn btn--common sign-up-btn">
+            <a routerLink="/register"> Sign up with Email </a>
+          </button>
+        </div>
+        <div class="legal">
+          <div class="legalMessage">
+            By creating an account, you agree to the Goodreads
+            <a href="">Terms of Service</a>
+            and
+            <a href="">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="signIn">
+          <div class="signIn--main">
+            <div class="signInContent">
+              Already a member?<a routerLink="/login">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- #Learn  -->
+
+<section class="section hero" id="home" aria-label="home">
+  <div class="container heroo--contaiener">
+    <div class="hero-content">
+      <p class="section-subtitle">Let's Make The Best Investment</p>
+      <h1 class="h1 hero-title">
+        Read More And Make Success The Result Of Perfection.
+      </h1>
+      <p class="section-text">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad harum
+        quibusdam, assumenda quia explicabo.
+      </p>
+    </div>
+
+    <div class="hero-banner has-before">
+      <img
+        src="images/hero-banner.png"
+        width="431"
+        height="596"
+        alt="things i never said, a novel by claudia wilson"
+        class="w-100"
+      />
+
+      <button class="play-btn bg-white" aria-label="play video">
+        <fa-icon class="" [icon]="faPlay"></fa-icon>
+      </button>
+    </div>
+  </div>
+</section>

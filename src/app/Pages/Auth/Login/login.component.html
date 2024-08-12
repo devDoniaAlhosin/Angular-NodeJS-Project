@@ -1,1 +1,103 @@
-<p>login works!</p>
+<section class="login--Section">
+  <div class="login--container">
+    <form
+      class="login-form"
+      #loginForm="ngForm"
+      (ngSubmit)="SendLoginData(loginForm)"
+    >
+      <h2 class="form-title">Login To GoodReads</h2>
+
+      <!-- Username Field -->
+      <div class="mb-3">
+        <!-- 4 characters and only allows alphanumeric characters (letters and numbers). -->
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Username"
+          ngModel
+          name="username"
+          #username="ngModel"
+          minlength="4"
+          required
+          pattern="^[a-zA-Z0-9]+$"
+        />
+        <div
+          *ngIf="username.invalid && username.touched"
+          class="form-text text-danger fs-6"
+        >
+          <div
+            *ngIf="
+              username.hasError('required') && !username.hasError('minlength')
+            "
+          >
+            Username Is Required Field
+          </div>
+          <div
+            *ngIf="
+              username.hasError('minlength') && !username.hasError('required')
+            "
+          >
+            Username Should Contain More than 4 Characters
+          </div>
+          <div
+            *ngIf="
+              username.hasError('pattern') &&
+              !username.hasError('required') &&
+              !username.hasError('minlength')
+            "
+          >
+            Username Can Only Contain Letters and Numbers
+          </div>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+          ngModel
+          name="password"
+          #userPassword="ngModel"
+          required
+        />
+        <div
+          *ngIf="userPassword.invalid && userPassword.touched"
+          id="passwordHelp"
+          class="form-text text-danger fs-6"
+        >
+          Password Is Required Field
+        </div>
+      </div>
+
+      <!-- Remember Me Checkbox -->
+      <div class="mb-3 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="exampleCheck1"
+          ngModel
+          name="rememberMe"
+          #rememberMe="ngModel"
+        />
+        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      </div>
+
+      <button type="submit" class="btn" [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </form>
+
+    <div class="dont--have-acount">
+      <h6>Dont Have an Account? <a routerLink="/register">Register</a></h6>
+    </div>
+  </div>
+  <div class="footer-image">
+    <img src="images/bookrow.jpg" alt="" />
+  </div>
+</section>

@@ -1,8 +1,14 @@
+.main-container {
+  width: 100%;
+  background: var(--primary-color);
+}
+
 .navbar {
-  background: #f0f1f3;
-  margin: 20px;
+  /* margin: 20px; */
   padding: 0.5rem;
-  border-radius: 16px;
+  margin: auto;
+  width: 80%;
+  /* border-radius: 16px; */
 }
 
 .navbar-brand {
@@ -117,4 +123,7 @@
     width: 70%;
     visibility: visible;
   }
+}
+.active {
+  color: var(--secondary-color);
 }
