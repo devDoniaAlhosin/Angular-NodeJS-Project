@@ -1,9 +1,7 @@
-.book-card {
-  cursor: pointer;
-}
 
 .book-cover {
   transition: 0.3s all ease;
+  cursor: pointer;
 }
 
 .book-card:hover .book-cover {
@@ -12,9 +10,19 @@
 
 .book-card .book-title {
   transition: 0.3s all ease;
+  cursor: pointer;
 }
 
 .book-card:hover .book-title {
   color: var(--hover-color);
+}
+
+.book-card .book-author {
+  cursor: pointer;
+}
+
+.book-card .book-author:hover {
+  color: var(--hover-color);
+  text-decoration: underline;
 }
 
