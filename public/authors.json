@@ -1,0 +1,63 @@
+[
+  {
+    "authorId": 1,
+    "name": "Haper Lee",
+    "image": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "birthDate": "11/03/1952",
+    "description":" Harpers Lee is an American writer, editor, and publisher who is best known for writing the book To Kill a Mockingbird, which won the 1960 Nebula Award.",
+    "books": [
+      "To Kill a Mockingbird",
+      "The Great Gatsby",
+      "Moby Dick"
+    ]
+  },
+  {
+    "authorId": 2,
+    "name": "J.K Rowling",
+    "image": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "birthDate": "31/07/1965",
+    "description":" J.K Rowling is a British writer, known for the Harry Potter series.",
+    "books": [
+      "Harry Potter and the Philosopher's Stone",
+      "Harry Potter and the Chamber of Secrets",
+      "Harry Potter and the Prisoner of Azkaban",
+      "Harry Potter and the Goblet of Fire"
+    ]
+  },
+  {
+    "authorId": 3,
+    "name": "George Orwell",
+    "image": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "birthDate": "26/06/1903",
+    "description":" George Orwell was a British author and journalist, known for his dystopian novels such as 1984 and Animal Farm.",
+    "books": [
+      "1984",
+      "Animal Farm",
+      "Coming Up For Air"
+    ]
+  },
+  {
+    "authorId": 4,
+    "name": "Stephen King",
+    "image": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "birthDate": "21/09/1947",
+    "description":" Stephen King is an American novelist, short story writer, and screenwriter. He is known for his horror, suspense, and supernatural fiction.",
+    "books": [
+      "The Shining",
+      "The Stand",
+      "It"
+    ]
+  },
+  {
+    "authorId": 5,
+    "name": "Agatha Christie",
+    "image": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "birthDate": "15/09/1890",
+    "description":" Agatha Christie was a British mystery writer, known for her detective stories, which often feature the sleuth Hercule Poirot.",
+    "books": [
+      "And Then There Were None",
+      "Murder on the Orient Express",
+      "The Body in the Library"
+    ]
+  }
+]
