@@ -1,0 +1,21 @@
+.author-cover img{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.author-title {
+  font-weight: bold;
+}
+
+.author-reviews {
+  padding: 3rem 2rem;
+  padding-bottom: 0;
+}
+
+.author-review-header {
+  position: absolute;
+  top: -22px;
+  padding: 10px 1rem;
+  background-color: var(--white-color);
+}
