@@ -1,46 +1,53 @@
-// auth.service.ts
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject, tap } from 'rxjs';
 import { LoginResponse } from './login-data.model';
-import { decodeJWT } from '../utils/jwt-utils'; // Import the utility function
+import { decodeJWT } from '../utils/jwt-utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private baseUrl = 'http://localhost:3000/api/users';
-  private loginUrl = 'http://localhost:3000/api/users/login'; // Node.js server URL
+  private loginUrl = 'http://localhost:3000/api/users/login';
+  private usernameSubject = new BehaviorSubject<string | null>(
+    this.getUsername()
+  );
+  public username$ = this.usernameSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  // Register user
   register(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, userData);
   }
 
-  // Login user
   login(username: string, password: string): Observable<LoginResponse> {
     return this.http
-      .post<LoginResponse>(this.loginUrl, { username, password })
+      .post<LoginResponse>(`${this.baseUrl}/login`, { username, password })
       .pipe(
         tap((response) => {
+          console.log(response);
           if (response.status === 'success' && response.data?.token) {
-            this.storeToken(response.data.token); // Store the token if the response is successful
+            this.storeToken(response.data.token);
+            this.usernameSubject.next(this.getUsername()); // Update the username
           }
         })
       );
   }
-
-  // Store token in localStorage
+  storeUserData(user: any): void {
+    localStorage.setItem('userData', JSON.stringify(user));
+  }
+  getUserData(): any {
+    const userData = localStorage.getItem('userData');
+    return userData ? JSON.parse(userData) : null;
+  }
   storeToken(token: string): void {
     localStorage.setItem('authToken', token);
   }
-
-  // Retrieve token
   getToken(): string | null {
     return localStorage.getItem('authToken');
   }
+
   getUsername(): string {
     const token = this.getToken();
     if (token) {
@@ -54,13 +61,12 @@ export class AuthService {
     }
     return '';
   }
-  // Get the role from the token
+
   getRole(): string {
     const token = this.getToken();
     if (token) {
       try {
-        const decoded = decodeJWT(token); // Decode token to extract payload
-        console.log('Decoded Token:', decoded);
+        const decoded = decodeJWT(token);
         return decoded?.role || '';
       } catch (error) {
         console.error('Failed to decode token:', error);
@@ -70,13 +76,19 @@ export class AuthService {
     return '';
   }
 
-  // Check if user is logged in
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
 
-  // Log out user
   logout(): void {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    this.usernameSubject.next(null); // Clear the username
+  }
+
+  private testLocalStorage(): void {
+    localStorage.setItem('testKey', 'testValue');
+    const testValue = localStorage.getItem('testKey');
+    console.log('Test value:', testValue); // Should log 'testValue'
   }
 }

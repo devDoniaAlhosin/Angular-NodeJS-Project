@@ -9,12 +9,21 @@ import { CanActivate, Router } from '@angular/router';
 export class RoleGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
+  // canActivate(): boolean {
+  //   const role = this.authService.getRole();
+  //   if (role === 'ADMIN') {
+  //     return true;
+  //   } else {
+  //     this.router.navigate(['/']);
+  //     return false;
+  //   }
+  // }
+
   canActivate(): boolean {
-    const role = this.authService.getRole();
-    if (role === 'ADMIN') {
+    if (this.authService.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['/home']); // Redirect to home if not authorized
+      this.router.navigate(['/']);
       return false;
     }
   }

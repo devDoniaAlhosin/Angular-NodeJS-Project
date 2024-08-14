@@ -1,3 +1,4 @@
+import { AuthService } from './../../../Core/Services/auth/auth.service';
 import { ValidateService } from './../../../Core/Services/validate/validate.service';
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
@@ -19,15 +20,19 @@ import {
   standalone: true,
   imports: [RouterLink, NgIf, FormsModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styleUrls: ['./register.component.css'], // Fixed styleUrl to styleUrls
+  providers: [AuthService],
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  errorMessage: string | null = null;
+  selectedFile: File | null = null; // Initialize selectedFile
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private ValidateService: ValidateService
+    private ValidateService: ValidateService,
+    private AuthService: AuthService
   ) {
     this.registerForm = this.fb.group(
       {
@@ -50,9 +55,11 @@ export class RegisterComponent {
     );
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    this.registerForm.patchValue({ profileImage: file });
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      this.selectedFile = input.files[0];
+    }
   }
 
   onSubmit() {
@@ -62,16 +69,27 @@ export class RegisterComponent {
       formData.append('email', this.registerForm.get('email')?.value);
       formData.append('username', this.registerForm.get('username')?.value);
       formData.append('password', this.registerForm.get('password')?.value);
-      if (this.registerForm.get('profileImage')?.value) {
-        formData.append(
-          'profileImage',
-          this.registerForm.get('profileImage')?.value
-        );
+      if (this.selectedFile) {
+        formData.append('avatar', this.selectedFile, this.selectedFile.name);
       }
-      // Handle the form submission
-      formData.forEach((value, key) => {
-        console.log(`${key}:`, value);
-      });
+
+      this.AuthService.register(formData).subscribe(
+        (response) => {
+          console.log(response);
+          if (response.status === 'success' && response.data.user?.token) {
+            this.AuthService.storeToken(response.data.user.token);
+            this.AuthService.storeUserData(response.data.user);
+            this.router.navigate(['/home']); // Redirect to home
+          }
+        },
+        (error) => {
+          if (error.status === 400) {
+            this.errorMessage = 'Username or email already exists!';
+          } else {
+            this.errorMessage = 'Registration failed. Please try again.';
+          }
+        }
+      );
     }
   }
 }

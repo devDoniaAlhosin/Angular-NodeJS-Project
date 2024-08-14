@@ -97,15 +97,38 @@
 .search--btn {
   background-color: var(--secondary-color);
   color: var(--white-color);
+  border-radius: none !important;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in;
   &:hover {
     background-color: var(--hover-color);
   }
 }
+.img--logo {
+  cursor: pointer;
+}
+.sec---user {
+  margin-left: 14rem;
+  span {
+    text-transform: capitalize;
 
-.sec---user{
-  margin-left:14rem;
+    cursor: pointer;
+  }
+  transition: 0.3s all ease-in;
+  &:hover {
+    color: var(--secondary-color);
+  }
 }
 
+.sec2---user {
+  cursor: pointer;
+  transition: 0.3s all ease-in;
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
 @media (min-width: 991px) {
   .nav-link::before {
     content: "";

@@ -15,9 +15,15 @@ import { AuthService } from '../../../Core/Services/auth/auth.service';
 export class NavbarComponent {
   faUser = faUser;
   faRightFromBracket = faRightFromBracket;
-  username: string;
+  username: string | null = null;
   constructor(private authService: AuthService, private router: Router) {
     this.username = this.authService.getUsername();
+  }
+
+  ngOnInit(): void {
+    this.authService.username$.subscribe((username) => {
+      this.username = username;
+    });
   }
 
   isLoggedIn(): boolean {
@@ -28,5 +34,16 @@ export class NavbarComponent {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+  // Navigate based on user role
+  navigateBasedOnRole(): void {
+    const role = this.authService.getRole();
+    if (role === 'ADMIN') {
+      this.router.navigate(['/admin']);
+    } else if (role === 'USER') {
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }

@@ -3,21 +3,22 @@ import { LandingPageComponent } from './Pages/landing-page/landing-page.componen
 import { RegisterComponent } from './Pages/Auth/Register/register.component';
 import { LoginComponent } from './Pages/Auth/Login/login.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
-import { AdminComponent } from './Pages/admin/admin/admin.component';
 import { RoleGuard } from './Core/guards/role.guard';
+import { AdminComponent } from './Pages/admin/admin.component';
+import { HomeComponent } from './Pages/home/home/home.component';
 // import { HomeComponent } from './Pages/HomePage/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
-    title: 'GoodReads | Landing Page',
+    title: 'GoodReads | Meet Your Next Favorite Book',
   },
-  // {
-  //   path: '/home',
-  //   component: HomeComponent,
-  //   title: 'GoodReads | Home ',
-  // },
+  {
+    path: 'home',
+    component: HomeComponent,
+    title: 'GoodReads | Home ',
+  },
   { path: 'login', component: LoginComponent, title: 'GoodReads | Login ' },
   {
     path: 'register',

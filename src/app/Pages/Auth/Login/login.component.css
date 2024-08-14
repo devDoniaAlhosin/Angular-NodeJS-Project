@@ -15,6 +15,7 @@
   border-radius: 16px;
   border: 1px solid rgba(128, 128, 128, 0.46);
   background-color: var(--white-color);
+  z-index: 1000000;
 }
 .login-form {
   width: 100% !important;
@@ -104,6 +105,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+
   img {
     width: 100%;
   }

@@ -89,8 +89,15 @@
           ngModel
           name="rememberMe"
           #rememberMe="ngModel"
+          appRememberMeValidator
+          required
         />
         <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      </div>
+
+      <!-- Display Validation Error -->
+      <div *ngIf="rememberMe.invalid && rememberMe.touched" class="text-danger">
+        Please check the 'Remember me' box to proceed.
       </div>
 
       <button type="submit" class="btn" [disabled]="loginForm.invalid">
