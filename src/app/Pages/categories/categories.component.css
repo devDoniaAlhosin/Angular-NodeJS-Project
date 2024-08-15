@@ -1,0 +1,36 @@
+/* category-details.component.css */
+
+.card {
+    background-color: #f8f9fa; /* Light background color */
+  }
+  
+  .card-body {
+    padding: 2rem; /* Increased padding for better spacing */
+  }
+  
+  .card-title {
+    font-size: 1.5rem; /* Larger title font size */
+  }
+  
+  .list-group-item {
+    border: 1px solid #dee2e6; /* Light border color */
+    border-radius: 0.25rem; /* Rounded corners */
+    transition: background-color 0.2s ease; /* Smooth background transition */
+  }
+  
+  .list-group-item:hover {
+    background-color: #e9ecef; /* Light hover background color */
+  }
+  
+  .list-group-item.active {
+    background-color: var(--secondary-color); /* Active background color */
+    color: #fff; /* Active text color */
+  }
+  .btn{
+    background-color: var(--secondary-color);
+    color: #fff;
+  }
+  .btn:hover{
+    background-color: var(--hover-color);
+  }
+  
