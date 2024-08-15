@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './Shared/Components/Footer/footer.component';
 import { NavbarComponent } from './Shared/Components/Navbar/navbar.component';
-
 @Component({
   selector: 'app-root',
   standalone: true,

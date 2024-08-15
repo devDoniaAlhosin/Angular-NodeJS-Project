@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let author of authors">
+        <td>{{ author.id }}</td>
+        <td><img [src]="author.image" alt="{{ author.name }}" width="50"></td>
+        <td>{{ author.name }}</td>
+        <td>{{ author.birthDate | date }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="onUpdate(author)">Edit</button>
+          <button class="btn btn-danger" (click)="onDelete(author.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Inline Update Form -->
+  <div *ngIf="selectedAuthor" class="update-form">
+    <h3>Update Author</h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="selectedAuthor.name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" class="form-control" id="image" [(ngModel)]="selectedAuthor.image" name="image">
+      </div>
+      <div class="form-group">
+        <label for="birthDate">Date of Birth:</label>
+        <input type="date" class="form-control" id="birthDate" [(ngModel)]="selectedAuthor.birthDate" name="birthDate">
+      </div>
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelUpdate()">Cancel</button>
+    </form>
+  </div>
+</div>

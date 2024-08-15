@@ -24,6 +24,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@ng-bootstrap/ng-bootstrap": "^17.0.0",
     "@popperjs/core": "^2.11.8",
+    "angular-node-project": "file:",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

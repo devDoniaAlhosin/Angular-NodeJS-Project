@@ -1,0 +1,102 @@
+<!-- <div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Genre ID</th>
+        <th>Author ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td><img [src]="book.image" alt="{{ book.title }}" width="50"></td>
+        <td>{{ book.genreId }}</td>
+        <td>{{ book.authorId }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="onUpdate(book)">Update</button>
+          <button class="btn btn-danger" (click)="onDelete(book.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedBook" class="update-form">
+    <h3>Update Book</h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="selectedBook.title" name="title">
+      </div>
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" class="form-control" id="image" [(ngModel)]="selectedBook.image" name="image">
+      </div>
+      <div class="form-group">
+        <label for="genreId">Genre ID:</label>
+        <input type="text" class="form-control" id="genreId" [(ngModel)]="selectedBook.genreId" name="genreId">
+      </div>
+      <div class="form-group">
+        <label for="authorId">Author ID:</label>
+        <input type="text" class="form-control" id="authorId" [(ngModel)]="selectedBook.authorId" name="authorId">
+      </div>
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelUpdate()">Cancel</button>
+    </form>
+  </div>
+</div> -->
+
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Genre ID</th>
+        <th>Author ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book._id }}</td>
+        <td>{{ book.title }}</td>
+        <td><img [src]="book.image" alt="{{ book.title }}" width="50"></td>
+        <!-- <td>
+          Display the genre names, assuming each genre is an object with 'id' and 'name'
+          <span *ngFor="let genre of book.genre">
+            {{ genre.name }}<span *ngIf="!isLastGenre(genre)">, </span>
+          </span>
+        </td>
+        <td>
+          Display the author names, assuming each author is an object with 'id' and 'name'
+          <span *ngFor="let author of book.author">
+            {{ author.name }}<span *ngIf="!isLastAuthor(author)">, </span>
+          </span>
+        </td> -->
+        <td>
+          <!-- Display the genre IDs -->
+          <span *ngFor="let genreId of book.genre">
+            {{ genreId }}<span *ngIf="!isLastGenre(genreId)">, </span>
+          </span>
+        </td>
+        <td>
+          <!-- Display the author IDs -->
+          <span *ngFor="let authorId of book.author">
+            {{ authorId }}<span *ngIf="!isLastAuthor(authorId)">, </span>
+          </span>
+        </td>
+
+        <td>
+          <button class="btn btn-warning" (click)="onUpdate(book)">Edit</button>
+          <button class="btn btn-danger" (click)="onDelete(book._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

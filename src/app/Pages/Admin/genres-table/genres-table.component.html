@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let genre of genres">
+        <td>{{ genre.id }}</td>
+        <td>{{ genre.name }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="onUpdate(genre)">Edit</button>
+          <button class="btn btn-danger" (click)="onDelete(genre.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Inline Update Form -->
+  <div *ngIf="selectedGenre" class="update-form">
+    <h3>Update Genre</h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="selectedGenre.name" name="name">
+      </div>
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelUpdate()">Cancel</button>
+    </form>
+  </div>
+</div>
+
