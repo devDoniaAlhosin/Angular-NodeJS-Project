@@ -591,6 +591,24 @@ body {
 }
 /* End Benefits  */
 
+/* Start Carsual  */
+
+/* End Carsual */
+
+/* Media  */
+@media screen and (min-width: 576px) {
+  .carousel-inner {
+    display: flex;
+  }
+  .carousel-item {
+    display: block;
+    margin-right: 0;
+    flex: 0 0 calc(100% / 3);
+  }
+  .img-wrapper {
+    height: 21vw;
+  }
+}
 @media (max-width: 676px) {
   .login--container {
     width: 90% !important;
