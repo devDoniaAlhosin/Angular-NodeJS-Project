@@ -4,16 +4,16 @@
       <div class="card border-0 text-center book-card">
         <div class="book-img-wrapper overflow-hidden">
           <img
-            [src]="book.cover"
+            [src]="book.image"
             class="card-img-top rounded-0 object-fit-cover book-cover"
             alt="book-cover"
             style="height: 300px"
-            (click)="onProductClick(book.bookId)"
+            (click)="onProductClick(book._id)"
           />
         </div>
         <div class="card-body">
-          <h5 class="card-title book-title" (click)="onProductClick(book.bookId)">{{ book.title }}</h5>
-          <p class="card-text book-author">{{ book.author }}</p>
+          <h5 class="card-title book-title" (click)="onProductClick(book._id)">{{ book.title }}</h5>
+          <p class="card-text book-author" (click)="onAuthorClick(book.author._id)" >{{ book.author.name }}</p>
         </div>
       </div>
     </div>

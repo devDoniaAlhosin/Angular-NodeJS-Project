@@ -8,11 +8,11 @@
             class="card-img-top rounded-0 object-fit-cover author-cover"
             alt="author-cover"
             style="height: 300px"
-            (click)="onProductClick(author.authorId)"
+            (click)="onProductClick(author._id)"
           />
         </div>
         <div class="card-body">
-          <h5 class="card-title author-title" (click)="onProductClick(author.authorId)">{{ author.name }}</h5>
+          <h5 class="card-title author-title" (click)="onProductClick(author._id)">{{ author.name }}</h5>
         </div>
       </div>
     </div>

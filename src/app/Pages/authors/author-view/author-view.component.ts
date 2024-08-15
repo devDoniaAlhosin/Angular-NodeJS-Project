@@ -18,7 +18,8 @@ export class AuthorViewComponent {
   ngOnInit() {
     this.authorsService.getAuthors().subscribe((res) => {
       this.authors = res;
-      this.author = this.authors.find((author: any) => author.authorId == this.id);
+      this.author = this.authors.find((author: any) => author._id == this.id);
+      console.log(this.author)
     });
   }
 

@@ -1,28 +1,29 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgFor } from '@angular/common';
 import { BooksService } from '../../../core/services/books/books.service';
-import { RouterLink } from '@angular/router';
+import { StarRatingComponent } from '../../../Shared/Components/star-rating/star-rating.component';
 
 @Component({
   selector: 'app-book-view',
   standalone: true,
-  imports: [RouterLink],
+  imports: [StarRatingComponent, NgFor],
   templateUrl: './book-view.component.html',
   styleUrl: './book-view.component.css'
 })
 export class BookViewComponent {
   @Input() id: any;
-  books!:any;
-  book!:any;
+  books :any;
+  book :any;
   constructor(
-    private booksService: BooksService
+    private booksService: BooksService,
+    private router: Router
   ) {}
 
   ngOnInit(){
-    console.log(this.id);
     this.booksService.getBooks().subscribe((res)=> {
       this.books = res;
-      this.book = this.books.find((book: any) => book.bookId == this.id);
-      console.log(this.book);
+      this.book = this.books.find((book: any) => book._id == this.id);
     })
   }
 
@@ -30,7 +31,11 @@ export class BookViewComponent {
     return Array(Math.round(rating)).fill(0);
   }
 
-  onAuthorClick(author: string) {
-    console.log(author);
+  onAuthorClick(id:number){
+    this.router.navigate(['authors', id]);
+  }
+
+  onGenreClick(id:number){
+    this.router.navigate(['genre', id]);
   }
 }

@@ -39,7 +39,7 @@
   {
     "authorId": 4,
     "name": "Stephen King",
-    "image": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "image": "https://images.pexels.com/photos/3225511/pexels-photo-3225511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","author": "F. Scott Fitzgerald",
     "birthDate": "21/09/1947",
     "description":" Stephen King is an American novelist, short story writer, and screenwriter. He is known for his horror, suspense, and supernatural fiction.",
     "books": [

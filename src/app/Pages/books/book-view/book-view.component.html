@@ -1,30 +1,51 @@
 <div class="container">
   <div class="row">
-    <div class="book-cover col-lg-3 col-md-6 col-12 ">
-      <img [src]="book.cover" alt="">
-    </div>
-    <div class="book-details col-lg-9 col-md-6 col-12 p-lg-3 p-4">
-      <h2 class="book-title">{{book.title}}</h2>
-      <h4 class="book-author" (click)="onAuthorClick(book.author)">{{book.author}}</h4>
-      <h4 class="book-category">{{book.category}}</h4>
-      <div class="rating d-flex ">
-        @for (rate of getStarArray(book.rating); track $index) {
-          <i class="bi bi-star-fill text-success"></i>
-        }
-        @for (rate of getStarArray(5 - book.rating); track $index) {
-          <i class="bi bi-star-fill text-secondary"></i>
-        }
-        <p class="ms-2">{{book.rating}} - 300 ratings</p>
+    <div
+      class="book-cover col-lg-3 col-md-6 col-12 align-items-center d-flex flex-column"
+    >
+      <img [src]="book?.image" alt="" />
+      <div class="dropdown mt-2">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Want to Read
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Read It</a></li>
+          <li><a class="dropdown-item" href="#">Reading It</a></li>
+        </ul>
       </div>
-      <p class="book-description">{{book.description}}</p>
+      <div class="user-rating mt-1">
+        <app-star-rating></app-star-rating>
+      </div>
+      <p>rate this book</p>
     </div>
-    <div class="book-reviews col-12 mt-5 border rounded position-relative">
-      <h5 class="book-review-header border rounded">Reviews</h5>
-      <p>
-        @for(review of book.reviews; track review) {
-          "{{ review }}" <br><br>
-        }
+    <div class="book-details col-lg-9 col-md-6 col-12 px-lg-5 p-4">
+      <h2 class="book-title">{{ book?.title }}</h2>
+      <h4 class="book-author" (click)="onAuthorClick(book?.author._id)">
+        {{ book?.author.name }}
+      </h4>
+      <p class="book-category" (click)="onGenreClick(book?.genre._id)">
+        genre: <span class="fw-bold border-bottom border-2 border-success">{{ book?.genre.name }}</span>
       </p>
+      <div class="rating d-flex">
+        <app-star-rating
+          [rating]="book?.rating"
+          [readonly]="true"
+        ></app-star-rating>
+
+        <p class="ms-2">{{ book?.rating }} - 300 ratings</p>
+      </div>
+      <p class="book-description">{{ book?.description }}</p>
+      <div class="book-reviews mt-5 border rounded position-relative">
+        <h5 class="book-review-header border rounded">Reviews</h5>
+        <p *ngFor="let e of [].constructor(5); let i = index">
+          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil delectus ea veniam. Minima non voluptate, iste quidem distinctio perspiciatis maiores. "
+        </p>
+      </div>
     </div>
   </div>
 </div>

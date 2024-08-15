@@ -27,4 +27,8 @@ export class BooksListComponent {
     this.router.navigate(['/books', id]);
   }
 
+  onAuthorClick(id:number){
+    this.router.navigate(['authors', id]);
+  }
+
 }
