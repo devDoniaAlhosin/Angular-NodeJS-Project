@@ -1,4 +1,6 @@
 <div class="container-fluid">
+  <button class="btn btn-primary mb-3" (click)="openAddAuthorModal()">➕ Add Author</button>
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -10,20 +12,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let author of authors">
-        <td>{{ author.id }}</td>
-        <td><img [src]="author.image" alt="{{ author.name }}" width="50"></td>
-        <td>{{ author.name }}</td>
-        <td>{{ author.birthDate | date }}</td>
+
+        <tr *ngFor="let author of authors">
+          <td>{{ author._id }}</td>
+          <td><img [src]="author.image" alt="{{ author.name }}" width="50"></td>
+          <td>{{ author.name }}</td>
+          <td>{{ author.birthDate | date }}</td>
+
         <td>
-          <button class="btn btn-warning" (click)="onUpdate(author)">Edit</button>
-          <button class="btn btn-danger" (click)="onDelete(author.id)">Delete</button>
+          <button class="btn btn-warning" (click)="onUpdate(author)">Update</button>
+          <button class="btn btn-danger" (click)="onDelete(author._id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-
-  <!-- Inline Update Form -->
   <div *ngIf="selectedAuthor" class="update-form">
     <h3>Update Author</h3>
     <form (ngSubmit)="onSubmit()">
@@ -43,4 +45,28 @@
       <button type="button" class="btn btn-secondary" (click)="cancelUpdate()">Cancel</button>
     </form>
   </div>
+
+  <div *ngIf="isAddAuthorModalOpen" class="modal">
+    <div class="modal-content">
+      <h4>Add New Author</h4>
+      <form (ngSubmit)="onAddAuthor()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" [(ngModel)]="newAuthor.name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL:</label>
+          <input type="text" id="image" [(ngModel)]="newAuthor.image" name="image" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="birthDate">Date of Birth:</label>
+          <input type="date" id="birthDate" [(ngModel)]="newAuthor.birthDate" name="birthDate" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Author</button>
+        <button type="button" class="btn btn-secondary" (click)="closeAddAuthorModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
 </div>
+
+

@@ -1,32 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Author } from '../../Shared/models/authorsInterface';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorsServiceService {
-  private apiUrl = 'http://localhost:3000/api/books'; // Adjust according to your backend URL
+  private apiUrl = 'http://localhost:3000/api/authors';
 
   constructor(private http: HttpClient) { }
    // Method to get all authors
    getAuthors(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
-
+  addAuthor(author: Author): Observable<Author> {
+    return this.http.post<Author>(this.apiUrl, author).pipe(
+      catchError(error => {
+        console.error('Error adding author:', error);
+        return throwError(() => new Error('Error adding author'));
+      })
+    );
+  }
   // Method to get a single author by ID
-  getAuthorById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  getAuthorById(_id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${_id}`);
   }
 
   // Method to update an author
-  updateAuthor(id: string, authorData: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, authorData);
+  updateAuthor(_id: string, authorData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${_id}`, authorData);
   }
 
   // Method to delete an author
-  deleteAuthor(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  deleteAuthor(_id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${_id}`);
   }
 }
+
 
 

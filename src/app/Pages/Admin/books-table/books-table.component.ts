@@ -79,17 +79,21 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookService } from '../../../core/services/book-services.service';
 import { Books } from '../../../Shared/models/booksInterface';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-books-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule ],
   templateUrl: './books-table.component.html',
   styleUrls: ['./books-table.component.css']
 })
 export class BooksTableComponent {
   books: Books[] = [];
   selectedBook: Books | null = null;
+  isAddBookModalOpen = false;
+  isUpdateFormOpen = false;
+  newBook: Books = { title: '', image: '', genre: [], author: [] };
+
 
   constructor(private booksService: BookService) {}
 
@@ -98,28 +102,24 @@ export class BooksTableComponent {
       this.books = data;
     });
   }
-
-  onUpdate(book: Books): void {
+  onUpdate(book: Books) {
     this.selectedBook = { ...book };
+    this.isUpdateFormOpen = true;
   }
-  onSubmit(): void {
-    if (this.selectedBook) {
-      // Ensure bookData is an object with the required properties
-      const bookData = {
-        title: this.selectedBook.title,
-        image: this.selectedBook.image,
-        genre: this.selectedBook.genre,
-        author: this.selectedBook.author
-      };
 
-      this.booksService.updateBook(this.selectedBook._id, bookData).subscribe(() => {
-        this.selectedBook = null;
-        this.ngOnInit(); // Refresh the list after update
+  onSubmitUpdate() {
+    if (this.selectedBook) {
+      this.booksService.updateBook(this.selectedBook).subscribe({
+        next: () => {
+          this.isUpdateFormOpen = false;
+          this.loadBooks(); // reload the books after update
+        },
+        error: (err) => console.error('Error updating book:', err),
       });
     }
   }
-
-  cancelUpdate(): void {
+  cancelUpdate() {
+    this.isUpdateFormOpen = false;
     this.selectedBook = null;
   }
 
@@ -129,6 +129,69 @@ export class BooksTableComponent {
     });
   }
 
+
+
+  openAddBookModal(): void {
+    this.isAddBookModalOpen = true;
+  }
+  onAddBook() {
+    this.booksService.addBook(this.newBook).subscribe({
+      next: () => {
+        this.isAddBookModalOpen = false;
+        this.loadBooks(); // reload the books after adding
+      },
+      error: (err) => console.error('Error adding book:', err),
+    });
+  }
+  closeAddBookModal(): void {
+    this.isAddBookModalOpen = false;
+    this.newBook = { _id: '', title: '', image: '', genre: [], author: [] };
+  }
+    // Method to load books (fetch from the backend)
+    loadBooks() {
+      this.booksService.getBooks().subscribe((data: Books[]) => {
+        this.books = data;
+      });
+    }
+    isLastGenre(genre: { _id: string; name: string }): boolean {
+      if (this.selectedBook?.genre && this.selectedBook.genre.length) {
+        return this.selectedBook.genre.indexOf(genre) === this.selectedBook.genre.length - 1;
+      }
+      return false; // Default to false if selectedBook or selectedBook.genre is undefined or empty
+    }
+
+
+    isLastAuthor(author: { _id: string; name: string }): boolean {
+      if (this.selectedBook?.author && this.selectedBook.author.length) {
+        return this.selectedBook.author.indexOf(author) === this.selectedBook.author.length - 1;
+      }
+      return false; // Default to false if selectedBook or selectedBook.author is undefined or empty
+    }
+
+
+
+  }
+ // openUpdateForm(book: Books) {
+  //   this.selectedBook = { ...book };
+  //   this.isUpdateFormOpen = true;
+  // }
+  // onSubmit(): void {
+  //   if (this.selectedBook) {
+  //     // Ensure bookData is an object with the required properties
+  //     const bookData = {
+  //       title: this.selectedBook.title,
+  //       image: this.selectedBook.image,
+  //       genre: this.selectedBook.genre,
+  //       author: this.selectedBook.author
+  //     };
+
+  //     this.booksService.updateBook(this.selectedBook._id, bookData).subscribe(() => {
+  //       this.selectedBook = null;
+  //       this.ngOnInit();
+  //     });
+  //   }
+  // }
+
   // onSubmit(): void {
   //   if (this.selectedBook) {
   //     this.booksService.updateBook(this.selectedBook).subscribe(() => {
@@ -137,31 +200,20 @@ export class BooksTableComponent {
   //     });
   //   }
   // }
-
-
-  // isLastGenre(genre: any): boolean {
-  //   return this.selectedBook?.genre && this.selectedBook.genre.indexOf(genre) === this.selectedBook.genre.length - 1;
+  // onAddBook(): void {
+  //   // Ensure genre and author are arrays of objects with _id and name
+  //   this.booksService.addBook(this.newBook).subscribe((book) => {
+  //     this.books.push(book);
+  //     this.closeAddBookModal();
+  //   });
   // }
 
-  // isLastAuthor(author: any): boolean {
-  //   return this.selectedBook?.author && this.selectedBook.author.indexOf(author) === this.selectedBook.author.length - 1;
+
+
+  // Method to close the add book modal
+  // closeAddBookModal() {
+  //   this.isAddBookModalOpen = false;
+  //   this.newBook = { title: '', author: '', genre: '' };
   // }
 
-  isLastGenre(genre: { _id: string; name: string }): boolean {
-    if (this.selectedBook?.genre && this.selectedBook.genre.length) {
-      return this.selectedBook.genre.indexOf(genre) === this.selectedBook.genre.length - 1;
-    }
-    return false; // Default to false if selectedBook or selectedBook.genre is undefined or empty
-  }
 
-
-  isLastAuthor(author: { _id: string; name: string }): boolean {
-    if (this.selectedBook?.author && this.selectedBook.author.length) {
-      return this.selectedBook.author.indexOf(author) === this.selectedBook.author.length - 1;
-    }
-    return false; // Default to false if selectedBook or selectedBook.author is undefined or empty
-  }
-
-
-
-}

@@ -50,7 +50,8 @@
   </div>
 </div> -->
 
-<div class="container-fluid">
+ <div class="container-fluid">
+  <button class="btn btn-primary mb-3" (click)="openAddBookModal()">➕ Add Book</button>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -67,31 +68,18 @@
         <td>{{ book._id }}</td>
         <td>{{ book.title }}</td>
         <td><img [src]="book.image" alt="{{ book.title }}" width="50"></td>
-        <!-- <td>
-          Display the genre names, assuming each genre is an object with 'id' and 'name'
-          <span *ngFor="let genre of book.genre">
-            {{ genre.name }}<span *ngIf="!isLastGenre(genre)">, </span>
-          </span>
-        </td>
-        <td>
-          Display the author names, assuming each author is an object with 'id' and 'name'
-          <span *ngFor="let author of book.author">
-            {{ author.name }}<span *ngIf="!isLastAuthor(author)">, </span>
-          </span>
-        </td> -->
-        <td>
-          <!-- Display the genre IDs -->
+         <td>
+           <!-- Display the genre IDs -->
           <span *ngFor="let genreId of book.genre">
             {{ genreId }}<span *ngIf="!isLastGenre(genreId)">, </span>
           </span>
         </td>
         <td>
-          <!-- Display the author IDs -->
+           <!-- Display the author IDs -->
           <span *ngFor="let authorId of book.author">
             {{ authorId }}<span *ngIf="!isLastAuthor(authorId)">, </span>
           </span>
         </td>
-
         <td>
           <button class="btn btn-warning" (click)="onUpdate(book)">Edit</button>
           <button class="btn btn-danger" (click)="onDelete(book._id)">Delete</button>
@@ -99,4 +87,30 @@
       </tr>
     </tbody>
   </table>
+   <!-- Pop-up Modal for Adding a New Book -->
+   <div *ngIf="isAddBookModalOpen" class="modal">
+    <div class="modal-content">
+      <h4>Add New Book</h4>
+      <form (ngSubmit)="onAddBook()">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" [(ngModel)]="newBook.title" name="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL:</label>
+          <input type="text" id="image" [(ngModel)]="newBook.image" name="image" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="genre">Genre IDs (comma separated):</label>
+          <input type="text" id="genre" [(ngModel)]="newBook.genre" name="genre" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="author">Author IDs (comma separated):</label>
+          <input type="text" id="author" [(ngModel)]="newBook.author" name="author" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Book</button>
+        <button type="button" class="btn btn-secondary" (click)="closeAddBookModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
 </div>
