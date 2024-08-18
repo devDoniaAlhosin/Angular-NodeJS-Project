@@ -1,0 +1,22 @@
+.container{
+    background-color: #f4f2e9;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.btn-custom {
+    color: #fff;
+    background-color: #377458;
+    /* border-color: #f4f2e9; */
+  }
+  
+  .btn-custom:hover {
+    color: #fff;
+    background-color: #5aa381;
+    border-color: #5aa381;
+  }
+  .categoryAncor:hover{
+    color: #377458;
+
+  }
+  

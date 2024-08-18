@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3 sidebar bg-light p-3">
+        <h5 class="mb-3">Filter by Status</h5>
+        <div class="list-group">
+          <a 
+            class="list-group-item list-group-item-action" 
+            [class.active]="selectedFilter === 'all'" 
+            (click)="filterBooks('all')">
+            All
+          </a>
+          <a 
+            class="list-group-item list-group-item-action" 
+            [class.active]="selectedFilter === 'read'" 
+            (click)="filterBooks('read')">
+            Read
+          </a>
+          <a 
+            class="list-group-item list-group-item-action" 
+            [class.active]="selectedFilter === 'reading'" 
+            (click)="filterBooks('reading')">
+            Currently Reading
+          </a>
+          <a 
+            class="list-group-item list-group-item-action" 
+            [class.active]="selectedFilter === 'want-to-read'" 
+            (click)="filterBooks('want-to-read')">
+            Want To Read
+          </a>
+        </div>
+      </div>
+  
+      <!-- Main Content: Book Table and Pagination -->
+      <div class="col-md-9">
+        <!-- Book Table -->
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Avg Rate</th>
+                <th>Rating</th>
+                <th>Shelf</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="paginatedBooks.length === 0">
+                <td colspan="6" class="text-center">No books available</td>
+              </tr>
+              <tr *ngFor="let book of paginatedBooks">
+                <td><img [src]="book.image" alt="{{ book.title }}" class="img-thumbnail" style="max-width: 50px; max-height: 75px;"></td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>
+                  <ng-container *ngFor="let star of getStars(book.avgRate)">
+                    <i class="fa fa-star text-warning"></i>
+                  </ng-container>
+                </td>
+                <td>
+                  <ng-container *ngFor="let star of getStars(book.rating)">
+                    <i class="fa fa-star text-warning"></i>
+                  </ng-container>
+                </td>
+                <td>
+                  <select class="form-select" [(ngModel)]="book.shelf" (ngModelChange)="filterBooks(selectedFilter)">
+                    <option value="read">Read</option>
+                    <option value="reading">Currently Reading</option>
+                    <option value="want-to-read">Want To Read</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" aria-label="Previous" (click)="changePage(currentPage - 1)">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li 
+              *ngFor="let page of [].constructor(getTotalPages()); let i = index" 
+              class="page-item" 
+              [class.active]="currentPage === i + 1">
+              <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === getTotalPages()">
+              <a class="page-link" aria-label="Next" (click)="changePage(currentPage + 1)">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
