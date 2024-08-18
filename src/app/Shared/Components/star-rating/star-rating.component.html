@@ -1,0 +1,30 @@
+<div
+  class="stars-wrapper d-flex flex-row-reverse justify-content-end"
+  [class.readOnly]="readonly"
+>
+  <i
+    [class.rated]="rating >= 5"
+    class="bi bi-star-fill text-secondary me-1 icon"
+    (click)="setRating(5)"
+  ></i>
+  <i
+    [class.rated]="rating >= 4"
+    class="bi bi-star-fill text-secondary me-1 icon"
+    (click)="setRating(4)"
+  ></i>
+  <i
+    [class.rated]="rating >= 3"
+    class="bi bi-star-fill text-secondary me-1 icon"
+    (click)="setRating(3)"
+  ></i>
+  <i
+    [class.rated]="rating >= 2"
+    class="bi bi-star-fill text-secondary me-1 icon"
+    (click)="setRating(2)"
+  ></i>
+  <i
+    [class.rated]="rating >= 1"
+    class="bi bi-star-fill text-secondary me-1 icon"
+    (click)="setRating(1)"
+  ></i>
+</div>

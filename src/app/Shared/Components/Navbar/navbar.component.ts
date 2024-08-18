@@ -26,6 +26,10 @@ export class NavbarComponent {
     });
   }
 
+  isAdmin(): boolean {
+    return this.authService.getRole() === 'ADMIN';
+  }
+
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }

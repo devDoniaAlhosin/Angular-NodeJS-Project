@@ -1,0 +1,21 @@
+.icon {
+  cursor: pointer;
+  transition: 0.2s ease all;
+  color: grey !important;
+}
+
+.icon.rated,
+.icon.rated:hover,
+.icon:hover,
+.icon:hover ~ .icon {
+  color: green !important;
+}
+
+.readOnly .icon {
+  cursor: default;
+}
+
+.readOnly .icon:hover:not(.rated),
+.readOnly .icon:hover ~ .icon:not(.rated) {
+  color: grey !important;
+}

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="author-cover col-lg-3 col-md-6 col-12">
+      <img [src]="author?.image" alt="" />
+    </div>
+    <div class="author-details col-lg-9 col-md-6 col-12 p-lg-3 p-4">
+      <h2 class="author-title">{{ author?.name }}</h2>
+      <h5 class="author-birthdate my-3">
+        Date of Birth: {{ formatDate(author?.birthDate) }}
+      </h5>
+
+      <p class="author-description">{{ author?.bio }}</p>
+    </div>
+    <div class="author-reviews col-12 mt-5 border rounded position-relative">
+      <h5 class="author-review-header border rounded">author's books</h5>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 .main-container {
   width: 100%;
   background: var(--primary-color);
+  /* margin-bottom: 3rem; */
 }
 
 .navbar {
