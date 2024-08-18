@@ -18,8 +18,6 @@ export const routes: Routes = [
     path: '',
     component: LandingPageComponent,
     title: 'GoodReads | Meet Your Next Favorite Book',
-    canActivate: [RoleGuard],
-    data: { expectedRole: 'guest' },
   },
   {
     path: 'home',
