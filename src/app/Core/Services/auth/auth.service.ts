@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, tap, map, catchError, of } from 'rxjs';
+import {
+  Observable,
+  BehaviorSubject,
+  tap,
+  map,
+  catchError,
+  of,
+  throwError,
+} from 'rxjs';
 import { LoginResponse } from './login-data.model';
 import { decodeJWT } from '../utils/jwt-utils';
 
@@ -8,14 +16,21 @@ import { decodeJWT } from '../utils/jwt-utils';
   providedIn: 'root',
 })
 export class AuthService {
+  constructor(private http: HttpClient) {
+    console.log('AuthService instantiated');
+  }
   private baseUrl = 'http://localhost:3000/api/users';
+
+  fetchUserBooks(userId: string) {
+    return this.http.get<{ status: string; data: any[] }>(
+      `${this.baseUrl}/${userId}/books`
+    );
+  }
 
   private usernameSubject = new BehaviorSubject<string | null>(
     this.getUsername()
   );
   public username$ = this.usernameSubject.asObservable();
-
-  constructor(private http: HttpClient) {}
 
   register(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, userData);
@@ -61,13 +76,8 @@ export class AuthService {
   }
 
   storeUserData(user: any): void {
+    console.log('Storing user data:', user);
     localStorage.setItem('userData', JSON.stringify(user));
-  }
-
-  getUserData(): any {
-    const userData = localStorage.getItem('userData');
-    console.log(userData);
-    return userData ? JSON.parse(userData) : null;
   }
 
   storeToken(token: string): void {
@@ -118,6 +128,39 @@ export class AuthService {
       }
     }
     return '';
+  }
+  getUserDataFromToken(): any {
+    const token = this.getToken();
+    if (token) {
+      try {
+        const decoded = decodeJWT(token);
+        // Assuming 'decoded' contains user data
+        return decoded || {}; // Return decoded data or an empty object
+      } catch (error) {
+        console.error('Failed to decode token:', error);
+        return null;
+      }
+    }
+    return null; // Return null if there's no token
+  }
+  getUserData(): any {
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      try {
+        return JSON.parse(userData);
+      } catch (error) {
+        console.error('Error parsing user data from localStorage:', error);
+        return null;
+      }
+    } else {
+      // Optionally fetch user data from token if not found in localStorage
+      const tokenUserData = this.getUserDataFromToken();
+      if (tokenUserData) {
+        // Optionally store the fetched data in localStorage
+        this.storeUserData(tokenUserData);
+      }
+      return tokenUserData;
+    }
   }
 
   isLoggedIn(): boolean {

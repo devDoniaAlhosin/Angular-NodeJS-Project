@@ -10,7 +10,15 @@ import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, NavbarComponent, HttpClientModule],
+
+  imports: [
+    RouterOutlet,
+    FooterComponent,
+    NavbarComponent,
+    FontAwesomeModule,
+    HttpClientModule,
+  ],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
