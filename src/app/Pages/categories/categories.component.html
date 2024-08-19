@@ -2,27 +2,39 @@
   <div class="row">
     <div class="col-md-12">
       <h2 class="mb-4 text-center">Book Categories</h2>
-      
+
       <div class="row">
-        <!-- Loop through each category -->
         <div *ngFor="let category of categories" class="col-md-12 mb-4">
           <h3 class="mb-3">{{ category.name }}</h3>
           <div class="row">
-            <!-- Loop through each book within the category -->
             <div *ngFor="let book of category.books" class="col-md-2 mb-4">
               <div class="card h-100 shadow-sm">
-                <img [src]="book.image" alt="{{ book.title }}" class="card-img-top">
+                <img
+                  [src]="book.image"
+                  alt="{{ book.title }}"
+                  class="card-img-top"
+                />
                 <div class="card-body">
-                  <h5 class="card-title">{{ book.title }}</h5> <!-- Corrected this line -->
-                  <p class="card-text">  
+                  <h5 class="card-title">{{ book.title }}</h5>
+                  <p class="card-text">
                     <span *ngFor="let author of book.author; let last = last">
-                      {{ author.name }}<ng-container *ngIf="!last">, </ng-container>
-                    </span></p> 
+                      {{ author.name }}
+                      <ng-container *ngIf="!last">, </ng-container>
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          <a [routerLink]="['/category-details']" class="btn btn-link">More {{ category.name.toLowerCase() }}...</a>
+
+          <div class="text-center mt-3">
+            <a
+              [routerLink]="['/category-details', category._id]"
+              class="btn btn-custom btn-lg"
+            >
+              More {{ category.name.toLowerCase() }}...
+            </a>
+          </div>
         </div>
       </div>
     </div>

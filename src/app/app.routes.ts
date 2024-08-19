@@ -39,6 +39,7 @@ export const routes: Routes = [
   { path: 'authors/:id', component: AuthorViewComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'category-details', component: CategoryDetailsComponent },
+  { path: 'category-details/:id', component: CategoryDetailsComponent },
   {
     path: 'admin',
     component: AdminComponent,
@@ -46,5 +47,6 @@ export const routes: Routes = [
     canActivate: [RoleGuard],
     data: { expectedRole: 'ADMIN' },
   },
-  { path: '**', component: NotFoundComponent, title: 'Not Found  ' },
+
+  { path: '**', redirectTo: '/NotFound' },
 ];

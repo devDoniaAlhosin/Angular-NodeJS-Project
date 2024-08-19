@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface Book {
-  name:string;
-  description:string
-  author: string;
-  rating: number;
-}
+import { Genre, Book } from '../../Shared/Models/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookService {
-  private apiUrl = 'http://localhost:3000/api/genres'; 
+  private baseUrl = 'http://localhost:3000/api/genres';
 
   constructor(private http: HttpClient) {}
 
-  getPopularBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.apiUrl);
+  getPopularBooks(categoryId: string): Observable<Genre> {
+    return this.http.get<Genre>(`${this.baseUrl}/${categoryId}`);
   }
 }

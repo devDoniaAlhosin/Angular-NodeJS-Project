@@ -1,22 +1,24 @@
-.container{
-    background-color: #f4f2e9;
-    padding-top: 3px;
-    padding-bottom: 3px;
+/* Ensure card images are responsive */
+.card-img-top {
+  height: auto;
 }
 
-.btn-custom {
-    color: #fff;
-    background-color: #377458;
-    /* border-color: #f4f2e9; */
-  }
-  
-  .btn-custom:hover {
-    color: #fff;
-    background-color: #5aa381;
-    border-color: #5aa381;
-  }
-  .categoryAncor:hover{
-    color: #377458;
+.categoryAncor {
+  color: #343a40;
+  text-decoration: none;
+}
 
-  }
-  
+.categoryAncor:hover {
+  color: #5aa381; /* Hover color */
+}
+
+/* Button customization */
+.btn-custom {
+  background-color: #5aa381; /* Button background color */
+  color: #fff; /* Button text color */
+}
+
+.btn-custom:hover {
+  background-color: #4a8d6d; /* Button hover background color */
+  color: #fff; /* Button text color on hover */
+}
