@@ -45,9 +45,8 @@ export class BookViewComponent {
     this.router.navigate(['authors', this.book.author[0]._id]);
   }
 
-  // Cheeckk AGGAAINN
   onGenreClick(id: number) {
-    this.router.navigate(['genre', this.book.genre[0]._id]);
+    this.router.navigate(['/category-details', this.book.genre[0]._id]);
   }
 
   setStatus(status: string): void {
