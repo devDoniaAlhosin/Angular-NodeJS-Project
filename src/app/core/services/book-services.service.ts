@@ -93,18 +93,8 @@ export class BookService {
     );
   }
 
-  // addBook(bookData: Books): Observable<Books> {
-  //   return this.http.post<Books>(this.apiUrl, bookData).pipe(
-  //     catchError(error => {
-  //       console.error('Error adding book:', error);
-  //       return throwError(() => new Error('Error adding book'));
-  //     })
-  //   );
-  // }
-
-
-  updateBook(book: Books): Observable<Books> {
-    return this.http.patch<Books>(`${this.apiUrl}/books/${book._id}`, book).pipe(
+  updateBook (_id: string,book: Books): Observable<Books> {
+    return this.http.patch<any>(`${this.apiUrl}/books/${_id}`, book).pipe(
       catchError((error) => {
         console.error('Error updating book:', error);
         return throwError('Error updating book');
@@ -113,7 +103,7 @@ export class BookService {
   }
 
   addBook(book: Books): Observable<Books> {
-    return this.http.post<Books>(`${this.apiUrl}/books`, book).pipe(
+    return this.http.post<Books>(this.apiUrl,book).pipe(
       catchError((error) => {
         console.error('Error adding book:', error);
         return throwError('Error adding book');
@@ -128,17 +118,8 @@ export class BookService {
     return this.http.get<any[]>('http://localhost:3000/api/authors');
   }
 
-  // updateBook(bookId: string, bookData: any): Observable<any> {
-  //   return this.http.put<any>(`${this.apiUrl}/${bookId}`, bookData).pipe(
-  //     catchError(error => {
-  //       console.error('Error updating book:', error);
-  //       return throwError(() => new Error('Error updating book'));
-  //     })
-  //   );
-  // }
-
-  deleteBook(bookId: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${bookId}`).pipe(
+  deleteBook(_id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${_id}`).pipe(
       catchError(error => {
         console.error('Error deleting book:', error);
         return throwError(() => new Error('Error deleting book'));

@@ -87,9 +87,37 @@
       </tr>
     </tbody>
   </table>
-   <!-- Pop-up Modal for Adding a New Book -->
-   <div *ngIf="isAddBookModalOpen" class="modal">
+
+  <!-- Modal for Updating Genre -->
+  <div *ngIf="isUpdateFormOpen" class="modal-overlay">
     <div class="modal-content">
+      <h4>Update Book</h4>
+      <form (ngSubmit)="onSubmitUpdate()">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            [(ngModel)]="selectedBook!.title"
+            name="title"
+            class="form-control"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="cancelUpdate()"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+   <!-- Pop-up Modal for Adding a New Book -->
+   <div *ngIf="isAddBookModalOpen" class="modal d-flex justify-content-center align-items-center">
+    <div class="modal-content ">
       <h4>Add New Book</h4>
       <form (ngSubmit)="onAddBook()">
         <div class="form-group">
@@ -108,8 +136,8 @@
           <label for="author">Author IDs (comma separated):</label>
           <input type="text" id="author" [(ngModel)]="newBook.author" name="author" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-success">Add Book</button>
-        <button type="button" class="btn btn-secondary" (click)="closeAddBookModal()">Cancel</button>
+        <button type="submit" class="btn btn-success mt-3">Add Book</button>
+        <button type="button" class="btn btn-secondary mt-3 custom-margin" (click)="closeAddBookModal()">Cancel</button>
       </form>
     </div>
   </div>

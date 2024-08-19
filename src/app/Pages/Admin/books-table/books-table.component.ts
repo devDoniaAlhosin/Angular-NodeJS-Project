@@ -80,6 +80,7 @@ import { CommonModule } from '@angular/common';
 import { BookService } from '../../../core/services/book-services.service';
 import { Books } from '../../../Shared/models/booksInterface';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-books-table',
   standalone: true,
@@ -92,30 +93,37 @@ export class BooksTableComponent {
   selectedBook: Books | null = null;
   isAddBookModalOpen = false;
   isUpdateFormOpen = false;
-  newBook: Books = { title: '', image: '', genre: [], author: [] };
-
+  newBook: Books = { _id:'',title: '', image: '', genre: [], author: [] };
+//openAddBookModal
 
   constructor(private booksService: BookService) {}
 
   ngOnInit(): void {
     this.booksService.getBooks().subscribe((data) => {
       this.books = data;
+    },
+    (error) => {
+      console.error('Error fetching books:', error);
     });
   }
-  onUpdate(book: Books) {
+  onUpdate(book: Books): void {
     this.selectedBook = { ...book };
     this.isUpdateFormOpen = true;
   }
 
-  onSubmitUpdate() {
+  onSubmitUpdate(): void {
     if (this.selectedBook) {
-      this.booksService.updateBook(this.selectedBook).subscribe({
-        next: () => {
+      this.booksService.updateBook(this.selectedBook._id, this.selectedBook).subscribe(
+        (res) => {
+          console.log('Book updated successfully:', res);
+          this.selectedBook = null;
           this.isUpdateFormOpen = false;
-          this.loadBooks(); // reload the books after update
+          this.loadBooks(); // Refresh the list after update
         },
-        error: (err) => console.error('Error updating book:', err),
-      });
+        (error) => {
+          console.error('Error updating book:', error);
+        }
+      );
     }
   }
   cancelUpdate() {
@@ -134,19 +142,26 @@ export class BooksTableComponent {
   openAddBookModal(): void {
     this.isAddBookModalOpen = true;
   }
-  onAddBook() {
-    this.booksService.addBook(this.newBook).subscribe({
-      next: () => {
-        this.isAddBookModalOpen = false;
-        this.loadBooks(); // reload the books after adding
-      },
-      error: (err) => console.error('Error adding book:', err),
-    });
-  }
   closeAddBookModal(): void {
     this.isAddBookModalOpen = false;
     this.newBook = { _id: '', title: '', image: '', genre: [], author: [] };
   }
+
+  onAddBook(): void {
+    // Split the comma-separated strings into arrays of objects
+
+    this.newBook.genre = this.newBook.genre.map(genre => ({ _id: genre._id.trim(), name: genre.name }));
+
+    this.newBook.author = this.newBook.author.map(author => ({ _id: author._id.trim(), name: author.name }));
+
+
+    this.booksService.addBook(this.newBook).subscribe(() => {
+      this.books.push(this.newBook);
+      this.closeAddBookModal();
+      this.loadBooks();
+    });
+  }
+
     // Method to load books (fetch from the backend)
     loadBooks() {
       this.booksService.getBooks().subscribe((data: Books[]) => {
@@ -160,7 +175,6 @@ export class BooksTableComponent {
       return false; // Default to false if selectedBook or selectedBook.genre is undefined or empty
     }
 
-
     isLastAuthor(author: { _id: string; name: string }): boolean {
       if (this.selectedBook?.author && this.selectedBook.author.length) {
         return this.selectedBook.author.indexOf(author) === this.selectedBook.author.length - 1;
@@ -171,49 +185,3 @@ export class BooksTableComponent {
 
 
   }
- // openUpdateForm(book: Books) {
-  //   this.selectedBook = { ...book };
-  //   this.isUpdateFormOpen = true;
-  // }
-  // onSubmit(): void {
-  //   if (this.selectedBook) {
-  //     // Ensure bookData is an object with the required properties
-  //     const bookData = {
-  //       title: this.selectedBook.title,
-  //       image: this.selectedBook.image,
-  //       genre: this.selectedBook.genre,
-  //       author: this.selectedBook.author
-  //     };
-
-  //     this.booksService.updateBook(this.selectedBook._id, bookData).subscribe(() => {
-  //       this.selectedBook = null;
-  //       this.ngOnInit();
-  //     });
-  //   }
-  // }
-
-  // onSubmit(): void {
-  //   if (this.selectedBook) {
-  //     this.booksService.updateBook(this.selectedBook).subscribe(() => {
-  //       this.selectedBook = null;
-  //       this.ngOnInit(); // Refresh the list after update
-  //     });
-  //   }
-  // }
-  // onAddBook(): void {
-  //   // Ensure genre and author are arrays of objects with _id and name
-  //   this.booksService.addBook(this.newBook).subscribe((book) => {
-  //     this.books.push(book);
-  //     this.closeAddBookModal();
-  //   });
-  // }
-
-
-
-  // Method to close the add book modal
-  // closeAddBookModal() {
-  //   this.isAddBookModalOpen = false;
-  //   this.newBook = { title: '', author: '', genre: '' };
-  // }
-
-

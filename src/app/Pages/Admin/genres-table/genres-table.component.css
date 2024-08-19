@@ -19,3 +19,7 @@
   width: 100%;
   max-width: 500px;
 }
+.custom-margin {
+  margin-left: 10px; /* Adjust the value as needed */
+
+}

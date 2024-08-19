@@ -46,8 +46,8 @@
     </form>
   </div>
 
-  <div *ngIf="isAddAuthorModalOpen" class="modal">
-    <div class="modal-content">
+  <div *ngIf="isAddAuthorModalOpen" class="modal d-flex justify-content-center align-items-center">
+    <div class="modal-content ">
       <h4>Add New Author</h4>
       <form (ngSubmit)="onAddAuthor()">
         <div class="form-group">
@@ -62,8 +62,8 @@
           <label for="birthDate">Date of Birth:</label>
           <input type="date" id="birthDate" [(ngModel)]="newAuthor.birthDate" name="birthDate" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-success">Add Author</button>
-        <button type="button" class="btn btn-secondary" (click)="closeAddAuthorModal()">Cancel</button>
+        <button type="submit" class="btn btn-success mt-3">Add Author</button>
+        <button type="button" class="btn btn-secondary mt-3  custom-margin" (click)="closeAddAuthorModal()">Cancel</button>
       </form>
     </div>
   </div>
