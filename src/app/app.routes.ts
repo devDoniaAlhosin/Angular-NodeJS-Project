@@ -9,9 +9,10 @@ import { CategoryDetailsComponent } from './Pages/category-details/category-deta
 export const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingPageComponent },
-  { path: 'home', component:HomeComponent },
-  {path: 'categories' , component:CategoriesComponent},
-  {path: 'category-details' , component:CategoryDetailsComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'categories', component: CategoriesComponent },
+  { path: 'category-details', component: CategoryDetailsComponent },
+  { path: 'category-details/:id', component: CategoryDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: '/NotFound' },

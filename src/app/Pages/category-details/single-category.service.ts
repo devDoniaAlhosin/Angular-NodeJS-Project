@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Book {
-  name:string;
-  description:string
+  name: string;
+  description: string;
   author: string;
   rating: number;
 }
@@ -13,7 +13,7 @@ interface Book {
   providedIn: 'root',
 })
 export class BookService {
-  private apiUrl = 'http://localhost:3000/api/genres'; 
+  private apiUrl = 'http://localhost:3000/api/genres';
 
   constructor(private http: HttpClient) {}
 

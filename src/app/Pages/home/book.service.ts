@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Book {
-  image:string;
+  image: string;
   title: string;
   author: string;
   avgRate: number;
@@ -12,7 +12,7 @@ interface Book {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookService {
   private apiUrl = 'http://localhost:3000/api/books';

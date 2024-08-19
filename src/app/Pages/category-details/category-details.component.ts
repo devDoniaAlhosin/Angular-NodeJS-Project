@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { BookService } from './single-category.service'; // Import the service
+import { BookService } from './single-category.service';
 import { Observable } from 'rxjs';
 
 interface Book {
-  name:string;
-  author: string;
-  rating: number;
-  description:string;
+  _id: string;
+  title: string;
+  author: string[];
+  description: string;
+  image: string;
+}
 
+interface Genre {
+  _id: string;
+  name: string;
+  description: string;
+  books: Book[];
 }
 
 @Component({
@@ -20,22 +27,31 @@ interface Book {
   styleUrls: ['./category-details.component.css'],
 })
 export class CategoryDetailsComponent {
-  categoryName: string;
+  categoryName: string = '';
+  categoryDescription: string = '';
   popularBooks: Book[] = [];
 
   constructor(private route: ActivatedRoute, private bookService: BookService) {
-    this.categoryName = this.route.snapshot.paramMap.get('category')!;
-    this.fetchPopularBooks();
+    const categoryId = this.route.snapshot.paramMap.get('id')!;
+    this.fetchCategoryDetails(categoryId);
   }
 
-  fetchPopularBooks(): void {
-    this.bookService.getPopularBooks().subscribe({
-      next: (data) => {
-        this.popularBooks = data;
+  fetchCategoryDetails(categoryId: string): void {
+    this.bookService.getPopularBooks(categoryId).subscribe({
+      next: (data: Genre) => {
+        this.categoryName = data.name;
+        this.categoryDescription = data.description; // Assign description
+        this.popularBooks = data.books.map((book: Book) => ({
+          _id: book._id,
+          title: book.title,
+          author: book.author,
+          description: book.description,
+          image: book.image,
+        }));
       },
       error: (error) => {
-        console.error('Error fetching books:', error);
-      }
+        console.error('Error fetching category details:', error);
+      },
     });
   }
 }
