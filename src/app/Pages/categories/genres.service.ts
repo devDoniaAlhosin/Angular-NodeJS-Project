@@ -6,12 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GenreService {
+  private baseUrl = 'http://localhost:4000/api/genres';
 
-  private apiUrl = 'http://localhost:3000/api/genres';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getGenres(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getGenres(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
   }
 }

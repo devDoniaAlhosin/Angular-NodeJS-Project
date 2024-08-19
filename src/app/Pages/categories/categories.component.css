@@ -1,36 +1,50 @@
-/* category-details.component.css */
-
+/* Increase card size and shadow */
 .card {
-    background-color: #f8f9fa; /* Light background color */
-  }
-  
-  .card-body {
-    padding: 2rem; /* Increased padding for better spacing */
-  }
-  
-  .card-title {
-    font-size: 1.5rem; /* Larger title font size */
-  }
-  
-  .list-group-item {
-    border: 1px solid #dee2e6; /* Light border color */
-    border-radius: 0.25rem; /* Rounded corners */
-    transition: background-color 0.2s ease; /* Smooth background transition */
-  }
-  
-  .list-group-item:hover {
-    background-color: #e9ecef; /* Light hover background color */
-  }
-  
-  .list-group-item.active {
-    background-color: var(--secondary-color); /* Active background color */
-    color: #fff; /* Active text color */
-  }
-  .btn{
-    background-color: var(--secondary-color);
-    color: #fff;
-  }
-  .btn:hover{
-    background-color: var(--hover-color);
-  }
-  
+  border: none; /* Optional: Remove card border */
+}
+
+.card-img-top {
+  height: 200px; /* Set a fixed height for images */
+  object-fit: cover; /* Ensure image covers the area without distortion */
+}
+
+.card-body {
+  padding: 1.5rem; /* Increase padding inside the card */
+}
+
+.card-title {
+  font-size: 1.25rem; /* Increase font size for card titles */
+}
+
+/* Customize anchor links */
+.categoryAncor {
+  color: #343a40; /* Default color */
+  text-decoration: none;
+}
+
+.categoryAncor:hover {
+  color: #5aa381; /* Hover color */
+}
+
+/* Customize category title */
+.category-title {
+  font-size: 2rem; /* Larger font size for category titles */
+  color: #343a40; /* Text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.category-title:hover {
+  color: #5aa381; /* Hover color for category titles */
+}
+
+/* Button customization */
+.btn-custom {
+  /* color: #5aa381; */
+  background-color: #4a8d6d;
+  color: #fff; /* Button link color */
+}
+
+.btn-custom:hover {
+  background-color: var(--hover-color);
+   /* Hover color for button link */
+}

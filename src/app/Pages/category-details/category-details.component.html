@@ -1,30 +1,36 @@
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="mb-4 text-center">{{ categoryName }} Single Category</h2>
-        <p class="lead mb-4 text-center">Explore the books and content related to {{ categoryName }}.</p>
-        
-        <div class="card shadow-sm mb-5">
-          <div class="card-header bg-light text-dark">
-            Popular {{ categoryName }} Books
-          </div>
-          <ul class="list-group bg-light text-dark list-group-flush">
-            <li class="list-group-item d-flex flex-column py-4" *ngFor="let book of popularBooks">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <h5 class="mb-1 "><a class="categoryAncor  text-dark" routerLink="/login">{{ book.name }}</a></h5>
-                  <p class="mb-1 text-muted"><a class="text-dark" routerLink="/register">{{ book.description }}</a></p>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="mb-4 text-center display-3">{{ categoryName }} Category</h2>
+      <p class="lead mb-4 text-center">{{ categoryDescription }}</p>
+
+      <div class="card shadow-lg mb-5">
+        <div class="card-header bg-light text-dark">
+          <h4 class="mb-0">Popular {{ categoryName }} Books</h4>
+        </div>
+        <div class="card-body">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Loop through each book within the category -->
+            <div *ngFor="let book of popularBooks" class="col">
+              <div class="card h-90 shadow-sm">
+                <img [src]="book.image" alt="{{ book.title }}" class="card-img-top img-fluid" style="max-width: 100%; height: 390px;">
+                <div class="card-body">
+                  <h5 class="card-title fs-4 mb-2">
+                    <a class="categoryAncor" [routerLink]="['/book', book._id]">{{ book.title }}</a>
+                  </h5>
+                  <p class="card-text mb-2 text-muted">
+                    <a class="categoryAncor" routerLink="/authors">Authors: {{ book.author.join(', ') }}</a>
+                  </p>
                 </div>
-                <!-- <span class="badge bg-primary">{{ book.boos }} ★</span> -->
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
-        
-        <div class="text-center">
-          <a class="btn btn-custom btn-lg" [routerLink]="['/categories']">Back to Categories</a>
-        </div>
+      </div>
+
+      <div class="text-center">
+        <a class="btn btn-custom btn-lg" [routerLink]="['/categories']">Back to Categories</a>
       </div>
     </div>
   </div>
-  
+</div>
