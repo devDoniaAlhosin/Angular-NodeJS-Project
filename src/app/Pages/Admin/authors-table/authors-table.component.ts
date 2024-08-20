@@ -12,14 +12,17 @@ import { Author } from '../../../Shared/models/authorsInterface';
   styleUrl: './authors-table.component.css'
 })
 export class AuthorsTableComponent {
-  // authors: any[] = [];
-  // selectedAuthor: any = null;
   authors: Author[] = [];
   selectedAuthor: Author | null = null;
   isAddAuthorModalOpen: boolean = false;
-  newAuthor: Author = { _id: '', name: '', image: '', birthDate: new Date() };
-
-
+  newAuthor: Partial<Author> = {
+    name: '',
+    bio: '',
+    nationality: '',
+    image: '',
+    birthDate: '',
+    books: []
+  };
   constructor(private authorService: AuthorsServiceService) {}
   ngOnInit(): void {
     this.authorService.getAuthors().subscribe((data) => {
@@ -32,16 +35,33 @@ export class AuthorsTableComponent {
 
   closeAddAuthorModal(): void {
     this.isAddAuthorModalOpen = false;
-    this.newAuthor = { _id: '', name: '', image: '', birthDate: new Date() }; // Reset form data
+    this.newAuthor = {
+      name: '',
+      bio: '',
+      nationality: '',
+      image: '',
+      birthDate: '',
+      books: []
+    };
   }
 
   onAddAuthor(): void {
-    this.authorService.addAuthor(this.newAuthor).subscribe(() => {
-      this.authors.push(this.newAuthor);
-      this.closeAddAuthorModal(); // Close the modal after adding the author
-    });
+    console.log('Adding author:', this.newAuthor);
+
+    // Omit the _id when sending the data to the service
+    this.authorService.addAuthor(this.newAuthor as Omit<Author, '_id'>).subscribe(
+      (response: Author) => {
+        console.log('Author added successfully:', response);
+        this.authors.push(response); // Add the full author object with _id
+        this.closeAddAuthorModal();
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error adding author:', error);
+      }
+    );
   }
 
+// update form
   onUpdate(author: Author): void {
     this.selectedAuthor = { ...author };
   }
@@ -58,26 +78,12 @@ export class AuthorsTableComponent {
   cancelUpdate(): void {
     this.selectedAuthor = null;
   }
-
+//delete
   onDelete(_id: string): void {
     this.authorService.deleteAuthor(_id).subscribe(() => {
       this.authors = this.authors.filter(author => author._id !== _id);
     });
   }
 }
-  // ngOnInit(): void {
-  //   this.getAuthors();
-  // }
-
-  // getAuthors(): void {
-  //   this.authorService.getAuthors().subscribe(
-  //     (data: any[]) => this.authors = data,
-  //     (error: HttpErrorResponse) => console.error('Error fetching authors:', error.message)
-  //   );
-  // }
-
-  // onUpdate(author: any): void {
-  //   this.selectedAuthor = { ...author }; // Create a copy to prevent direct mutation
-  // }
 
 

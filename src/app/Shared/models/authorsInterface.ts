@@ -1,7 +1,10 @@
 export interface Author{
   _id:string,
   name:string,
-  birthDate:Date,
-  image:string
+  bio:string,
+  nationality:string,
+  birthDate:string,
+  image:string,
+  books:[]
 
 }

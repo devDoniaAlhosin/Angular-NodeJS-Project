@@ -10,11 +10,12 @@ export class AuthorsServiceService {
   private apiUrl = 'http://localhost:3000/api/authors';
 
   constructor(private http: HttpClient) { }
+  
    // Method to get all authors
    getAuthors(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
-  addAuthor(author: Author): Observable<Author> {
+  addAuthor(author: Omit<Author, '_id'>): Observable<Author> {
     return this.http.post<Author>(this.apiUrl, author).pipe(
       catchError(error => {
         console.error('Error adding author:', error);
@@ -29,7 +30,7 @@ export class AuthorsServiceService {
 
   // Method to update an author
   updateAuthor(_id: string, authorData: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${_id}`, authorData);
+    return this.http.patch<any>(`${this.apiUrl}/${_id}`, authorData);
   }
 
   // Method to delete an author
