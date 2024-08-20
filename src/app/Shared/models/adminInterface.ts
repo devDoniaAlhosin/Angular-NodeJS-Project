@@ -1,10 +1,9 @@
 export default interface Admin{
-_id:String,
-name:String,
-email:String,
-username:String,
-password:String,
-role:String,
-avatar:String
-
+_id:string,
+name:string,
+email:string,
+username:string,
+password:string,
+role:string,
+avatar:string
 }

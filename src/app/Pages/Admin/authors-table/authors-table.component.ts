@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthorsServiceService } from '../../../core/services/authors-service.service';
+import { AuthorsServiceService } from '../../../core/AdminServices/authors-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Author } from '../../../Shared/models/authorsInterface';
 @Component({
@@ -21,7 +21,6 @@ export class AuthorsTableComponent {
     nationality: '',
     image: '',
     birthDate: '',
-    books: []
   };
   constructor(private authorService: AuthorsServiceService) {}
   ngOnInit(): void {
@@ -40,8 +39,8 @@ export class AuthorsTableComponent {
       bio: '',
       nationality: '',
       image: '',
-      birthDate: '',
-      books: []
+      birthDate: ''
+
     };
   }
 
@@ -52,7 +51,7 @@ export class AuthorsTableComponent {
     this.authorService.addAuthor(this.newAuthor as Omit<Author, '_id'>).subscribe(
       (response: Author) => {
         console.log('Author added successfully:', response);
-        this.authors.push(response); // Add the full author object with _id
+        this.authors.push(response);
         this.closeAddAuthorModal();
       },
       (error: HttpErrorResponse) => {

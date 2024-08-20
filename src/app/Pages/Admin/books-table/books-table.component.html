@@ -6,7 +6,7 @@
         <th>ID</th>
         <th>Title</th>
         <th>Image</th>
-        <th>Genre </th>
+        <th>Genre</th>
         <th>Author</th>
         <th>Actions</th>
       </tr>
@@ -18,19 +18,21 @@
         <td><img [src]="book.image" alt="{{ book.title }}" width="50"></td>
         <td>
           <!-- Display the genre IDs -->
-          <span *ngFor="let genre of book.genre">
-            {{ genre._id }}<span *ngIf="!isLastGenre(genre._id)">, </span>
+          <span *ngFor="let genre of book.genre; let i = index">
+            {{ genre }}<span *ngIf="!isLastGenre(genre)">, </span>
           </span>
         </td>
         <td>
           <!-- Display the author IDs -->
-          <span *ngFor="let author of book.author">
-            {{ author._id }}<span *ngIf="!isLastAuthor(author._id)">, </span>
+          <span *ngFor="let author of book.author; let i = index">
+            {{ author }}<span *ngIf="!isLastAuthor(author)">, </span>
           </span>
         </td>
+
+
         <td>
-          <button class="btn btn-warning " (click)="onUpdate(book)">update</button>
-          <button class="btn btn-danger custom-margin" (click)="onDelete(book._id)">Delete</button>
+          <button class="btn btn-warning" (click)="onUpdate(book)">Update</button>
+          <button *ngIf="book._id" class="btn btn-danger custom-margin" (click)="onDelete(book._id)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -39,71 +41,43 @@
   <!-- Modal for Updating Book -->
   <div *ngIf="selectedBook" class="modal-overlay">
     <div class="update-form">
-    <h4>Update Book</h4>
-
-    <form (ngSubmit)="onSubmitUpdate()">
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" id="title" [(ngModel)]="selectedBook!.title" name="title" class="form-control" required />
+      <h4>Update Book</h4>
+      <form (ngSubmit)="onSubmitUpdate()">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" [(ngModel)]="selectedBook.title" name="title" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="author">Author:</label>
-          <input type="text" id="author" [(ngModel)]="selectedBook!.author" name="author" class="form-control"
-            required />
+          <input type="text" id="author" [(ngModel)]="selectedBook.author" name="author" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="genre">Genre:</label>
-          <input type="text" id="genre" [(ngModel)]="selectedBook!.genre" name="genre" class="form-control" required />
+          <input type="text" id="genre" [(ngModel)]="selectedBook.genre" name="genre" class="form-control" required />
         </div>
-<!--
+
         <div class="form-group">
-          <label for="description">Description:</label>
-          <input type="text" id="description" [(ngModel)]="selectedBook!.description" name="description"
-            class="form-control" required />
-        </div>
-        <div class="form-group">
-          <label for="published">Published:</label>
-          <input type="text" id="published" [(ngModel)]="selectedBook!.published" name="published" class="form-control"
-            required />
-        </div>
-        <div class="form-group">
-          <label for="rating">Rating:</label>
-          <input type="text" id="rating" [(ngModel)]="selectedBook!.rating" name="rating" class="form-control"
-            required />
-        </div>
-        <div class="form-group">
-          <label for="reviews_count">Reviews Count:</label>
-          <input type="text" id="reviews_count" [(ngModel)]="selectedBook!.reviews_count" name="reviews_count"
-            class="form-control" required />
-        </div>
-        <div class="form-group">
-          <label for="isbn">ISBN:</label>
-          <input type="text" id="isbn" [(ngModel)]="selectedBook!.isbn" name="isbn" class="form-control" required />
-        </div> -->
-        <div class="form-group">
-          <label for="image">Image Url:</label>
-          <input type="text" id="image" [(ngModel)]="selectedBook!.image" name="image" class="form-control" required />
+          <label for="image">Image URL:</label>
+          <input type="text" id="image" [(ngModel)]="selectedBook.image" name="image" class="form-control" required />
         </div>
         <button type="submit" class="btn btn-success mt-3">Save</button>
-        <button type="button" class="btn btn-secondary mt-3 custom-margin" (click)="cancelUpdate()">
-          Cancel
-        </button>
-    </form>
-  </div>
+        <button type="button" class="btn btn-secondary mt-3 custom-margin" (click)="cancelUpdate()">Cancel</button>
+      </form>
+    </div>
   </div>
 
   <!-- Pop-up Modal for Adding a New Book -->
-  <div *ngIf="isAddBookModalOpen" class="modal d-flex justify-content-center align-items-center">
+ <div *ngIf="isAddBookModalOpen" class="modal d-flex justify-content-center align-items-center">
     <div class="modal-content">
       <h4>Add New Book</h4>
       <form (ngSubmit)="onAddBook()">
         <div class="form-group">
           <label for="title">Title:</label>
-          <input type="text" id="title" [(ngModel)]="newBook.title" name="title" class="form-control" required>
+          <input type="text" id="title" [(ngModel)]="newBook.title" name="title" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="image">Image URL:</label>
-          <input type="text" id="image" [(ngModel)]="newBook.image" name="image" class="form-control" required>
+          <input type="text" id="image" [(ngModel)]="newBook.image" name="image" class="form-control" required />
         </div>
         <div class="form-group">
           <label for="genre">Genre :</label>
@@ -113,9 +87,12 @@
           <label for="author">Author:</label>
           <input type="text" id="author" [(ngModel)]="newBook.author" name="author" class="form-control" required>
         </div>
+
         <button type="submit" class="btn btn-success mt-3">Add Book</button>
         <button type="button" class="btn btn-secondary mt-3 custom-margin" (click)="closeAddBookModal()">Cancel</button>
       </form>
     </div>
-  </div>
+  </div> 
+
+
 </div>

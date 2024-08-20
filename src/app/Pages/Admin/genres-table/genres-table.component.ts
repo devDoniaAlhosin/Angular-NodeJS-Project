@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GenresServiceService } from '../../../core/services/genres-service.service';
+import { GenresServiceService } from '../../../core/AdminServices/genres-service.service';
 import { Genre } from '../../../Shared/models/genresInterface';
 import { HttpErrorResponse } from '@angular/common/http';
 
