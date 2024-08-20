@@ -1,15 +1,12 @@
 .main-container {
   width: 100%;
   background: var(--primary-color);
-  /* margin-bottom: 3rem; */
 }
 
 .navbar {
-  /* margin: 20px; */
   padding: 0.5rem;
   margin: auto;
   width: 80%;
-  /* border-radius: 16px; */
 }
 
 .navbar-brand {
@@ -50,7 +47,7 @@
   outline: none;
 }
 .navbar-nav {
-  gap: 3rem;
+  gap: 1rem;
 }
 .nav-link {
   color: var(--text);
@@ -111,7 +108,6 @@
   cursor: pointer;
 }
 .sec---user {
-  margin-left: 14rem;
   span {
     text-transform: capitalize;
 
@@ -154,4 +150,10 @@
 }
 .active {
   color: var(--secondary-color);
+}
+.right--user {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }

@@ -2,7 +2,7 @@
   background-image: url("../../../../../public/images/tan-bg-texture.jpg");
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: 130vh;
   width: 100%;
   padding: 7rem 0;
   position: relative;
@@ -10,8 +10,8 @@
 .login--container {
   width: 40%;
   margin: auto;
-  /* background-color: aquamarine; */
-  padding: 4rem 7rem;
+  /* padding: 4rem 7rem; */
+  padding: 4rem 3rem;
   border-radius: 16px;
   border: 1px solid rgba(128, 128, 128, 0.46);
   background-color: var(--white-color);

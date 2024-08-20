@@ -40,13 +40,13 @@ export const routes: Routes = [
   { path: 'categories', component: CategoriesComponent },
   { path: 'category-details', component: CategoryDetailsComponent },
   { path: 'category-details/:id', component: CategoryDetailsComponent },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    title: 'GoodReads | Admin Panel  ',
-    canActivate: [RoleGuard],
-    data: { expectedRole: 'ADMIN' },
-  },
+  // {
+  //   path: 'admin',
+  //   component: AdminComponent,
+  //   title: 'GoodReads | Admin Panel  ',
+  //   canActivate: [RoleGuard],
+  //   data: { expectedRole: 'ADMIN' },
+  // },
 
   { path: '**', redirectTo: '/NotFound' },
 ];
