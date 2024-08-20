@@ -70,7 +70,7 @@ export class AuthService {
     const url = `${this.baseUrl}/${userId}/books/${bookId}`;
     const body = { rating, status };
 
-    console.log('Sending request with body:', body);
+    console.log('Sending request with body:', body); // Log the request body
 
     return this.http.post(url, body);
   }

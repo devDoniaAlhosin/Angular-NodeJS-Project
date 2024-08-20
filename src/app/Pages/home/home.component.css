@@ -1,24 +1,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-.table-responsive{
-    border: none;
+.table-responsive {
+  border: none;
 }
-.list-group-item,.page-link{
-    cursor: pointer;
+.list-group-item,
+.page-link {
+  cursor: pointer;
 }
 .list-group-item {
-    border: none;
+  border: none;
 }
 
-/* Hover effect for the dropdown items */
 .list-group-item:hover {
-    background-color: var(--hover-color);
-    color: white;
-    
+  background-color: var(--hover-color);
+  color: white;
 }
 
-/* Active item style */
 .list-group-item.active {
-    background-color: var(--hover-color);
-    border-color: #5aa381;
+  background-color: var(--hover-color);
+  border-color: #5aa381;
 }
 
+.status-finished {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2rem 0;
+  span {
+    color: white;
+    padding: 0.5rem 1rem;
+    border: 1px solid green;
+    border-radius: 9px;
+    background-color: green;
+  }
+}
+
+.status-not-read {
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2rem 0;
+  span {
+    color: white;
+    padding: 0.5rem 1rem;
+    border: 1px solid red;
+    border-radius: 9px;
+    background-color: red;
+  }
+}
+
+.status-reading {
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2rem 0;
+  span {
+    color: white;
+    padding: 0.5rem 1rem;
+    border: 1px solid blue;
+    border-radius: 9px;
+    background-color: blue;
+  }
+}
+.icons--design {
+  color: var(--star-color);
+}

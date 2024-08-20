@@ -2,7 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Router } from '@angular/router';
-import { BooksService } from '../../../core/services/books/books.service';
+import { BooksService } from '../../../Core/Services/books/books.service';
 
 @Component({
   selector: 'app-books-list',

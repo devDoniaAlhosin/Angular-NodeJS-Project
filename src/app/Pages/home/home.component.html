@@ -85,17 +85,27 @@
                   <ng-container
                     *ngFor="let star of getStars(book.book?.rating)"
                   >
-                    <fa-icon [icon]="faStar"></fa-icon>
+                    <fa-icon class="icons--design" [icon]="faStar"></fa-icon>
                   </ng-container>
                 </ng-container>
               </td>
               <td>
                 <ng-container *ngFor="let star of getStars(book.rating)">
-                  <fa-icon [icon]="faStar"></fa-icon>
+                  <fa-icon class="icons--design" [icon]="faStar"></fa-icon>
                 </ng-container>
               </td>
 
-              <td>{{ book.status }}</td>
+              <td
+                [ngClass]="{
+                  'status-finished': book.status === 'finished',
+                  'status-not-read': book.status === 'not read',
+                  'status-reading': book.status === 'reading'
+                }"
+              >
+                <span>
+                  {{ book.status }}
+                </span>
+              </td>
             </tr>
           </tbody>
         </table>

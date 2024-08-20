@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AuthorsService } from '../../../core/services/authors/authors.service';
 import { DatePipe } from '@angular/common';
-import { BooksService } from '../../../core/services/books/books.service';
+import { BooksService } from '../../../Core/Services/books/books.service';
 
 @Component({
   selector: 'app-author-view',
@@ -25,6 +25,7 @@ export class AuthorViewComponent {
 
   ngOnInit() {
     if (this.id) {
+      console.log(this.id);
       this.authorsService.getAuthorById(this.id).subscribe(
         (res) => {
           this.author = res;

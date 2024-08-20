@@ -99,7 +99,6 @@ export class HomeComponent implements OnInit {
               };
             });
 
-            // Fetch author names
             this.fetchAuthorNames();
             this.filteredBooks = [...this.books];
           } else {

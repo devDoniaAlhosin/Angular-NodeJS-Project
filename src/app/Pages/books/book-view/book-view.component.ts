@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgFor, TitleCasePipe } from '@angular/common';
-import { BooksService } from '../../../core/services/books/books.service';
+
 import { StarRatingComponent } from '../../../Shared/Components/star-rating/star-rating.component';
 import { AuthService } from '../../../Core/Services/auth/auth.service';
+import { BooksService } from '../../../Core/Services/books/books.service';
 
 @Component({
   selector: 'app-book-view',
@@ -19,16 +20,18 @@ export class BookViewComponent {
   bookId: string | null = null;
   userId: string | null = null;
   selectedStatus: string = 'not read';
+  errorMessage: string | null = null;
+
   constructor(
     private booksService: BooksService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.userId = this.authService.getUserId();
     console.log('User ID in ngOnInit:', this.userId);
-
     this.booksService.getBooks().subscribe((res) => {
       console.log(res);
       this.books = res;
@@ -49,34 +52,54 @@ export class BookViewComponent {
     this.router.navigate(['/category-details', this.book.genre[0]._id]);
   }
 
-  setStatus(status: string): void {
+  updateBookRatingAndStatus(
+    newRating: number | null,
+    newStatus: string | null
+  ): void {
     if (!this.book || !this.userId) {
       console.error('Book or user ID is not defined.');
       return;
     }
 
-    this.selectedStatus = status;
+    // Use current values if no new value is provided
+    const ratingToUpdate = newRating !== null ? newRating : this.book.rating;
+    const statusToUpdate = newStatus !== null ? newStatus : this.selectedStatus;
+
+    console.log(
+      'Updating rating:',
+      ratingToUpdate,
+      'and status:',
+      statusToUpdate,
+      'for book ID:',
+      this.book._id
+    );
 
     this.authService
       .setBookRateAndStatus(
         this.userId,
         this.book._id,
-        this.book.rating,
-        status
+        ratingToUpdate,
+        statusToUpdate
       )
       .subscribe(
         (response) => {
-          console.log('Book status updated:', response);
+          console.log('Rating and status updated successfully', response);
+          if (newRating !== null) {
+            this.book.rating = ratingToUpdate;
+          }
+          if (newStatus !== null) {
+            this.selectedStatus = statusToUpdate;
+          }
         },
         (error) => {
-          console.error('Error updating book status:', error);
+          console.error('Failed to update rating and status', error);
         }
       );
   }
+
   onRatingChange(newRating: number): void {
-    console.log('New rating received:', newRating);
     if (!this.book || !this.userId) {
-      console.error('Book or user ID is not defined.');
+      this.errorMessage = 'Book or user ID is not defined.';
       return;
     }
 
@@ -93,6 +116,8 @@ export class BookViewComponent {
           this.book.rating = newRating;
         },
         (error) => {
+          this.errorMessage =
+            'Failed to update rating and status. Please try again.';
           console.error('Failed to update rating and status', error);
         }
       );
@@ -100,9 +125,10 @@ export class BookViewComponent {
 
   onStatusChange(newStatus: string): void {
     if (!this.book || !this.userId) {
-      console.error('Book or user ID is not defined.');
+      this.errorMessage = 'Book or user ID is not defined.';
       return;
     }
+
     this.selectedStatus = newStatus;
 
     this.authService
@@ -117,6 +143,7 @@ export class BookViewComponent {
           console.log('Status updated successfully', response);
         },
         (error) => {
+          this.errorMessage = 'Failed to update status. Please try again.';
           console.error('Failed to update status', error);
         }
       );

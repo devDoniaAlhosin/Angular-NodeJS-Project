@@ -10,7 +10,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class StarRatingComponent {
   @Input() rating: number = 0;
   @Input() readonly: boolean = false;
-
   @Output() ratingChange = new EventEmitter<number>();
 
   setRating(newRating: number): void {

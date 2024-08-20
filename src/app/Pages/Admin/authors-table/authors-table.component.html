@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <button class="btn btn-primary mb-3" (click)="openAddAuthorModal()">➕ Add Author</button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let author of authors">
+          <td>{{ author._id }}</td>
+          <td><img [src]="author.image" alt="{{ author.name }}" width="50"></td>
+          <td>{{ author.name }}</td>
+          <td>{{ author.birthDate | date }}</td>
+
+        <td>
+          <button class="btn btn-warning" (click)="onUpdate(author)">Update</button>
+          <button class="btn btn-danger custom-margin" (click)="onDelete(author._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- update form -->
+  <div *ngIf="selectedAuthor" class="modal-overlay">
+    <div class="update-form">
+    <h3>Update Author</h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="selectedAuthor.name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" class="form-control" id="image" [(ngModel)]="selectedAuthor.image" name="image">
+      </div>
+      <div class="form-group">
+        <label for="birthDate">Date of Birth:</label>
+        <input type="date" class="form-control" id="birthDate" [(ngModel)]="selectedAuthor.birthDate" name="birthDate">
+      </div>
+      <div class="form-group">
+        <label for="books">Books:</label>
+        <input type="text" class="form-control" id="books" [(ngModel)]="selectedAuthor.books" name="books">
+      </div>
+      <div class="form-group">
+        <label for="bio">BIO:</label>
+        <input type="text" class="form-control" id="bio" [(ngModel)]="selectedAuthor.bio" name="bio">
+      </div>
+      <div class="form-group">
+        <label for="nationality">Nationality:</label>
+        <input type="text" class="form-control" id="nationality" [(ngModel)]="selectedAuthor.nationality" name="nationality">
+      </div>
+      <button type="submit" class="btn btn-success mt-3 ">Save</button>
+      <button type="button" class="btn btn-secondary mt-3 custom-margin" (click)="cancelUpdate()">Cancel</button>
+    </form>
+  </div>
+</div>
+<!-- ADD FORM -->
+  <div *ngIf="isAddAuthorModalOpen" class="modal d-flex justify-content-center align-items-center">
+    <div class="modal-content ">
+      <h4>Add New Author</h4>
+      <form (ngSubmit)="onAddAuthor()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" [(ngModel)]="newAuthor.name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="bio">Bio:</label>
+          <input type="text" id="bio" [(ngModel)]="newAuthor.bio" name="bio" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="birthDate">Date of Birth:</label>
+          <input type="date" id="birthDate" [(ngModel)]="newAuthor.birthDate" name="birthDate" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="nationality">Nationality:</label>
+          <input type="text" id="nationality" [(ngModel)]="newAuthor.nationality" name="nationality" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL:</label>
+          <input type="text" id="image" [(ngModel)]="newAuthor.image" name="image" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Add Author</button>
+        <button type="button" class="btn btn-secondary mt-3  custom-margin" (click)="closeAddAuthorModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

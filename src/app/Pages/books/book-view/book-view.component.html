@@ -3,27 +3,26 @@
     <div
       class="book-cover col-lg-3 col-md-6 col-12 align-items-center d-flex flex-column"
     >
-      <img [src]="book?.image" alt="" />
+      <img [src]="book?.image" alt="{{ book?.title || 'Book Cover' }}" />
       <div class="dropdown mt-2">
         <button
           class="btn btn-secondary dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          (click)="setStatus('reading')"
         >
           {{ selectedStatus | titlecase }}
         </button>
         <ul class="dropdown-menu">
           <li>
             <a class="dropdown-item" (click)="onStatusChange('finished')"
-              >Finished
-            </a>
+              >Finished</a
+            >
           </li>
           <li>
             <a class="dropdown-item" (click)="onStatusChange('reading')"
-              >Reading
-            </a>
+              >Reading</a
+            >
           </li>
           <li>
             <a class="dropdown-item" (click)="onStatusChange('not read')"
@@ -34,9 +33,13 @@
       </div>
 
       <div class="user-rating mt-1">
-        <app-star-rating></app-star-rating>
+        <app-star-rating
+          [rating]="book?.userRating"
+          [readonly]="false"
+          (ratingChange)="onRatingChange($event)"
+        ></app-star-rating>
       </div>
-      <p>rate this book</p>
+      <p>Rate this book</p>
     </div>
     <div class="book-details col-lg-9 col-md-6 col-12 px-lg-5 p-4">
       <h2 class="book-title">{{ book?.title }}</h2>
@@ -44,27 +47,25 @@
         {{ book?.author[0]?.name }}
       </h4>
       <p class="book-category" (click)="onGenreClick(book?.genre._id)">
-        genre:
-        <span class="fw-bold border-bottom border-2 border-success">{{
-          book?.genre[0]?.name
-        }}</span>
+        Genre:
+        <span class="fw-bold border-bottom border-2 border-success">
+          {{ book?.genre[0]?.name }}
+        </span>
       </p>
       <div class="rating d-flex">
         <app-star-rating
           [rating]="book?.rating"
-          [readonly]="false"
-          (ratingChange)="onRatingChange($event)"
+          [readonly]="true"
         ></app-star-rating>
-
         <p class="ms-2">{{ book?.rating }} - 300 ratings</p>
       </div>
       <p class="book-description">{{ book?.description }}</p>
       <div class="book-reviews mt-5 border rounded position-relative">
         <h5 class="book-review-header border rounded">Reviews</h5>
-        <p *ngFor="let e of [].constructor(5); let i = index">
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
+        <p *ngFor="let e of [1, 2, 3, 4, 5]; let i = index">
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
           delectus ea veniam. Minima non voluptate, iste quidem distinctio
-          perspiciatis maiores. "
+          perspiciatis maiores."
         </p>
       </div>
     </div>

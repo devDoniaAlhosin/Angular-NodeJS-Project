@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <button class="btn btn-primary mb-3" (click)="openAddGenreModal()">
+    ➕ Add Genre
+  </button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let genre of genres">
+        <td>{{ genre._id }}</td>
+        <td>{{ genre.name }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="onUpdate(genre)">
+            Update
+          </button>
+          <button class="btn btn-danger custom-margin" (click)="onDelete(genre._id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal for Updating Genre -->
+  <div *ngIf="selectedItem" class="modal-overlay">
+    <div class="modal-content">
+      <h4>Update Genre</h4>
+      <form (ngSubmit)="onSubmitUpdate()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="selectedItem!.name"
+            name="name"
+            class="form-control"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Save</button>
+        <button
+          type="button"
+          class="btn btn-secondary  mt-3  custom-margin"
+          (click)="cancelUpdate()"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for Adding New Genre -->
+  <div *ngIf="isAddGenreModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <h4>Add New Genre</h4>
+      <form (ngSubmit)="onAddGenre()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="newGenre.name"
+            name="name"
+            class="form-control"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-success mt-3 ">Add Genre</button>
+        <button
+          type="button"
+          class="btn btn-secondary  mt-3  custom-margin"
+          (click)="closeAddGenreModal()"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,6 @@ import { LoginComponent } from './Pages/Auth/Login/login.component';
 
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { RoleGuard } from './Core/guards/role.guard';
-import { AdminComponent } from './Pages/admin/admin.component';
 import { HomeComponent } from './Pages/home/home.component';
 
 import { CategoriesComponent } from './Pages/categories/categories.component';
@@ -15,6 +14,7 @@ import { BookViewComponent } from './Pages/books/book-view/book-view.component';
 import { BooksListComponent } from './Pages/books/books-list/books-list.component';
 import { AuthorsListComponent } from './Pages/authors/authors-list/authors-list.component';
 import { AuthorViewComponent } from './Pages/authors/author-view/author-view.component';
+import { AdminLayoutComponent } from './Pages/Admin/admin-layout/admin-layout.component';
 
 export const routes: Routes = [
   {
@@ -40,13 +40,13 @@ export const routes: Routes = [
   { path: 'categories', component: CategoriesComponent },
   { path: 'category-details', component: CategoryDetailsComponent },
   { path: 'category-details/:id', component: CategoryDetailsComponent },
-  // {
-  //   path: 'admin',
-  //   component: AdminComponent,
-  //   title: 'GoodReads | Admin Panel  ',
-  //   canActivate: [RoleGuard],
-  //   data: { expectedRole: 'ADMIN' },
-  // },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    title: 'GoodReads | Admin Panel  ',
+    canActivate: [RoleGuard],
+    data: { expectedRole: 'ADMIN' },
+  },
 
   { path: '**', redirectTo: '/NotFound' },
 ];

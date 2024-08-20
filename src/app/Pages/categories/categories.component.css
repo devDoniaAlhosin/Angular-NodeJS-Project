@@ -8,11 +8,11 @@
 }
 
 .card-body {
-  padding: 1.5rem; /* Increase padding inside the card */
+  padding: 1.5rem;
 }
 
 .card-title {
-  font-size: 1.25rem; /* Increase font size for card titles */
+  font-size: 1.25rem;
 }
 
 /* Customize anchor links */
@@ -27,23 +27,22 @@
 
 /* Customize category title */
 .category-title {
-  font-size: 2rem; /* Larger font size for category titles */
-  color: #343a40; /* Text color */
-  text-decoration: none; /* Remove underline */
+  font-size: 2rem;
+  color: #343a40;
+  text-decoration: none;
 }
 
 .category-title:hover {
-  color: #5aa381; /* Hover color for category titles */
+  color: #5aa381;
 }
 
 /* Button customization */
 .btn-custom {
   /* color: #5aa381; */
   background-color: #4a8d6d;
-  color: #fff; /* Button link color */
+  color: #fff;
 }
 
 .btn-custom:hover {
   background-color: var(--hover-color);
-  /* Hover color for button link */
 }
