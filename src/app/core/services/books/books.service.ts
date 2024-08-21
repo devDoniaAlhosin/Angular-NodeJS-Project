@@ -13,9 +13,9 @@ export class BooksService {
     return this.http.get(this.baseUrl);
     // return this.http.get('books.json')
   }
-  getBookById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${id}`);
-  }
+  // getBookById(id: string): Observable<any> {
+  //   return this.http.get<any>(`${this.baseUrl}/${id}`);
+  // }
   getBooksByAuthorId(authorId: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}?author=${authorId}`);
   }

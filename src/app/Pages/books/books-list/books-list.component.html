@@ -12,7 +12,6 @@
             [src]="book.image"
             class="card-img-top rounded-0 object-fit-cover book-cover"
             alt="book-cover"
-            style="height: 300px"
             (click)="onProductClick(book._id)"
           />
         </div>
@@ -23,12 +22,6 @@
           <p class="card-text book-author">
             <span *ngFor="let author of book.author; let isLast = last">
               <a (click)="onAuthorClick(author._id)">{{ author.name }}</a>
-              <span *ngIf="!isLast">, </span>
-            </span>
-          </p>
-          <p class="card-text book-genre">
-            <span *ngFor="let genre of book.genre; let isLast = last">
-              {{ genre.name }}
               <span *ngIf="!isLast">, </span>
             </span>
           </p>

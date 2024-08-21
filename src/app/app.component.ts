@@ -17,41 +17,41 @@ import { catchError, of } from 'rxjs';
 export class AppComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    const userId = this.authService.getUserId();
-    if (userId) {
-      this.authService
-        .checkUserExistence(userId)
-        .pipe(
-          catchError((error) => {
-            console.error('Error checking user existence', error);
-            this.authService.logout();
-            return of(false);
-          })
-        )
-        .subscribe((exists) => {
-          if (!exists) {
-            this.authService.logout();
-            this.router.navigate(['/']);
-          } else {
-            if (this.authService.isLoggedIn()) {
-              const role = this.authService.getRole();
-              if (role === 'ADMIN') {
-                this.router.navigate(['/admin']);
-              } else if (role === 'USER') {
-                this.router.navigate(['/home']);
-              } else {
-                this.router.navigate(['/']);
-              }
-            } else {
-              this.router.navigate(['/']);
-            }
-          }
-        });
-    } else {
-      this.router.navigate(['/']);
-    }
-  }
+  // ngOnInit(): void {
+  //   const userId = this.authService.getUserId();
+  //   if (userId) {
+  //     this.authService
+  //       .checkUserExistence(userId)
+  //       .pipe(
+  //         catchError((error) => {
+  //           console.error('Error checking user existence', error);
+  //           this.authService.logout();
+  //           return of(false);
+  //         })
+  //       )
+  //       .subscribe((exists) => {
+  //         if (!exists) {
+  //           this.authService.logout();
+  //           this.router.navigate(['/']);
+  //         } else {
+  //           if (this.authService.isLoggedIn()) {
+  //             const role = this.authService.getRole();
+  //             if (role === 'ADMIN') {
+  //               this.router.navigate(['/admin']);
+  //             } else if (role === 'USER') {
+  //               this.router.navigate(['/home']);
+  //             } else {
+  //               this.router.navigate(['/']);
+  //             }
+  //           } else {
+  //             this.router.navigate(['/']);
+  //           }
+  //         }
+  //       });
+  //   } else {
+  //     this.router.navigate(['/']);
+  //   }
+  // }
 
   title = 'Angular_Node_Project';
 }

@@ -27,13 +27,10 @@ export class BookViewComponent {
 
   ngOnInit() {
     this.userId = this.authService.getUserId();
-    console.log('User ID in ngOnInit:', this.userId);
 
     this.booksService.getBooks().subscribe((res) => {
-      console.log(res);
       this.books = res;
       this.book = this.books.find((book: any) => book._id == this.id);
-      console.log(this.book);
     });
   }
 
