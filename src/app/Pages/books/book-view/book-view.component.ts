@@ -71,30 +71,6 @@ export class BookViewComponent {
         }
       );
   }
-  onRatingChange(newRating: number): void {
-    console.log('New rating received:', newRating);
-    if (!this.book || !this.userId) {
-      console.error('Book or user ID is not defined.');
-      return;
-    }
-
-    this.authService
-      .setBookRateAndStatus(
-        this.userId,
-        this.book._id,
-        newRating,
-        this.selectedStatus
-      )
-      .subscribe(
-        (response) => {
-          console.log('Rating and status updated successfully', response);
-          this.book.rating = newRating;
-        },
-        (error) => {
-          console.error('Failed to update rating and status', error);
-        }
-      );
-  }
 
   onStatusChange(newStatus: string): void {
     if (!this.book || !this.userId) {
@@ -119,4 +95,30 @@ export class BookViewComponent {
         }
       );
   }
+
+  // add this to rating if we're going to use the below function: (ratingChange)="onRatingChange($event)"
+  // onRatingChange(newRating: number): void {
+  //   console.log('New rating received:', newRating);
+  //   if (!this.book || !this.userId) {
+  //     console.error('Book or user ID is not defined.');
+  //     return;
+  //   }
+
+  //   this.authService
+  //     .setBookRateAndStatus(
+  //       this.userId,
+  //       this.book._id,
+  //       newRating,
+  //       this.selectedStatus
+  //     )
+  //     .subscribe(
+  //       (response) => {
+  //         console.log('Rating and status updated successfully', response);
+  //         this.book.rating = newRating;
+  //       },
+  //       (error) => {
+  //         console.error('Failed to update rating and status', error);
+  //       }
+  //     );
+  // }
 }

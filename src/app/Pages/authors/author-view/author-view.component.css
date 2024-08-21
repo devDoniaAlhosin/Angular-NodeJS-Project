@@ -42,13 +42,12 @@
   color: var(--hover-color);
 }
 
-.book-controls .dropdown button {
-  background: green;
-  color: #fff;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.book-details .rating-numbers {
+  font-size: 14px;
+  color: #666;
+}
+
+.book-controls button {
   font-size: 14px;
   position: relative;
 }

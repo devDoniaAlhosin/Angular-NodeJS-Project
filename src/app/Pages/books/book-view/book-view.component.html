@@ -34,7 +34,9 @@
       </div>
 
       <div class="user-rating mt-1">
-        <app-star-rating></app-star-rating>
+        <app-star-rating
+
+        ></app-star-rating>
       </div>
       <p>rate this book</p>
     </div>
@@ -43,25 +45,26 @@
       <h4 class="book-author" (click)="onAuthorClick(book?.author._id)">
         {{ book?.author[0]?.name }}
       </h4>
-      <p class="book-category" (click)="onGenreClick(book?.genre._id)">
+      <p class="book-category text-capitalize" (click)="onGenreClick(book?.genre._id)">
         genre:
         <span class="fw-bold border-bottom border-2 border-success">{{
           book?.genre[0]?.name
         }}</span>
       </p>
-      <div class="rating d-flex">
+      <div class="rating mb-3 d-flex align-items-center">
         <app-star-rating
           [rating]="book?.rating"
-          [readonly]="false"
-          (ratingChange)="onRatingChange($event)"
+          [readonly]="true"
+          style="font-size: 1.5rem;"
+          class="me-2 p-0 m-0"
         ></app-star-rating>
-
-        <p class="ms-2">{{ book?.rating }} - 300 ratings</p>
+        <h2 class="p-0 m-0">{{ book?.rating }}</h2>
+        <span class="rating-numbers center ms-1"> - 300 ratings</span>
       </div>
-      <p class="book-description">{{ book?.description }}</p>
-      <div class="book-reviews mt-5 border rounded position-relative">
-        <h5 class="book-review-header border rounded">Reviews</h5>
-        <p *ngFor="let e of [].constructor(5); let i = index">
+      <p class="book-description w-75">{{ book?.description }}</p>
+      <div class="book-reviews mt-5 border position-relative">
+        <h5 class="book-review-header border rounded fw-bold text-uppercase">Reviews</h5>
+        <p class="pb-3 review" *ngFor="let e of [].constructor(5); let i = index">
           " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
           delectus ea veniam. Minima non voluptate, iste quidem distinctio
           perspiciatis maiores. "

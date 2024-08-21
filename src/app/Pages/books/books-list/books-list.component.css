@@ -1,3 +1,10 @@
+.book-card {
+  transition: 0.3s all ease;
+}
+
+.book-card:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
 
 .book-cover {
   transition: 0.3s all ease;
@@ -5,7 +12,7 @@
 }
 
 .book-card:hover .book-cover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .book-card .book-title {
