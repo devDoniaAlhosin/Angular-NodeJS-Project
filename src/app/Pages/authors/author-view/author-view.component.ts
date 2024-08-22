@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AuthorsService } from '../../../core/services/authors/authors.service';
+import { AuthorsService } from '../../../Core/Services/authors/authors.service';
 import { DatePipe } from '@angular/common';
 import { BooksService } from '../../../Core/Services/books/books.service';
 

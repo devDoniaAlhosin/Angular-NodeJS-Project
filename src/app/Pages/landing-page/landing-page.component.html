@@ -38,9 +38,9 @@
     </div>
   </div>
 </div>
+<!-- End Hero Section  -->
 
 <!-- #Learn  -->
-
 <section class="section hero" id="home" aria-label="home">
   <div class="container heroo--contaiener">
     <div class="hero-content">
@@ -69,50 +69,81 @@
     </div>
   </div>
 </section>
-<!-- Carsual -->
+<!-- #Author -->
+<section class="section author" id="author">
+  <div class="container">
+    <h1>Popular Authors</h1>
+    <div class="all--authors-container">
+      <div *ngFor="let author of authors" class="single--author--container">
+        <figure class="author-banner img-holder" style="">
+          <img
+            [src]="author.image || 'images/author-banner.png'"
+            width="30%"
+            height=""
+            loading="lazy"
+            alt="Martin Jenny"
+            class="img-cover"
+          />
+        </figure>
+        <div class="author-content">
+          <p class="section-subtitle">The Author</p>
+
+          <h2 class="h2 section-title">
+            {{ author.name || "Unknown Author" }}
+          </h2>
+
+          <p class="author-name">
+            Number Of Published Books : {{ author.books.length }}
+          </p>
+
+          <div class="section-text">
+            {{ truncateDescription(author.bio, 100) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Benefits  -->
 
 <section class="section benefits" id="benefits" aria-label="benefits">
   <div class="container m-auto">
     <div class="d-flex gap-lg-5 main--benefits">
-      <li class="benefits-content">
+      <li class="benefits--items">
         <h2 class="h2 section-title">What you'll achieve by Reading books</h2>
 
-        <p class="section-text fs-6">Lorem ipsum dolor sit</p>
+        <p class="section-text fs-6">Meet Your Favorite Book</p>
       </li>
-
-      <li>
+      <li *ngFor="let book of books; let i = index" class="benefits--items">
         <div class="benefits-card has-before has-after">
           <div class="card-icon">
             <img
-              src="/images/benefits-1.svg"
+              [src]="getImageByIndex(i)"
               width="40"
               height="40"
               loading="lazy"
-              alt="Experience"
+              [alt]="book.title || 'Benefit Image'"
             />
           </div>
 
-          <h3 class="h3 card-title">Experience</h3>
+          <h3 class="h3 card-title fs-5">{{ book.title || "Strategy" }}</h3>
 
           <p class="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Repellendus, ex? Voluptas minus quis aspernatur corporis.
+            {{
+              truncateDescription(
+                book.description || "Lorem ipsum dolor sit amet...",
+                50
+              )
+            }}
           </p>
 
           <a href="#" class="btn-link">
-            <span class="span">Read more</span>
-
-            <!-- <ion-icon
-              name="chevron-forward-outline"
-              aria-hidden="true"
-            ></ion-icon> -->
+            <span class="span"> <a routerLink="/login">Read more</a></span>
           </a>
         </div>
       </li>
-
-      <li>
+      <!-- <li class="benefits--items">
         <div class="benefits-card has-before has-after">
           <div class="card-icon">
             <img
@@ -133,16 +164,12 @@
 
           <a href="#" class="btn-link">
             <span class="span">Read more</span>
-            <!--
-            <ion-icon
-              name="chevron-forward-outline"
-              aria-hidden="true"
-            ></ion-icon> -->
+
           </a>
         </div>
       </li>
 
-      <li>
+      <li class="benefits--items">
         <div class="benefits-card has-before has-after">
           <div class="card-icon">
             <img
@@ -164,13 +191,34 @@
           <a href="#" class="btn-link">
             <span class="span">Read more</span>
 
-            <!-- <ion-icon
-              name="chevron-forward-outline"
-              aria-hidden="true"
-            ></ion-icon> -->
+
           </a>
         </div>
       </li>
+      <li class="benefits--items">
+        <div class="benefits-card has-before has-after">
+          <div class="card-icon">
+            <img
+              src="images/benefits-6.svg"
+              width="40"
+              height="40"
+              loading="lazy"
+              alt="Strategy"
+            />
+          </div>
+
+          <h3 class="h3 card-title">Strategy</h3>
+
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Repellendus, ex? Voluptas minus quis aspernatur corporis.
+          </p>
+
+          <a href="#" class="btn-link">
+            <span class="span">Read more</span>
+          </a>
+        </div>
+      </li> -->
     </div>
   </div>
 </section>

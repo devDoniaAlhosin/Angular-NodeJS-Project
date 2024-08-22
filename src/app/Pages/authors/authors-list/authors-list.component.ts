@@ -2,7 +2,7 @@ import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AuthorsService } from '../../../core/services/authors/authors.service';
+import { AuthorsService } from '../../../Core/Services/authors/authors.service';
 
 @Component({
   selector: 'app-authors-list',

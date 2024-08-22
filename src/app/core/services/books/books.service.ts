@@ -10,8 +10,7 @@ export class BooksService {
   constructor(private http: HttpClient) {}
 
   getBooks() {
-    return this.http.get(this.baseUrl);
-    // return this.http.get('books.json')
+    return this.http.get<any[]>('http://localhost:3000/api/books');
   }
   getBookById(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);

@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { BookService } from './book.service';
 import { AuthService } from '../../Core/Services/auth/auth.service';
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
-import { AuthorsService } from '../../core/services/authors/authors.service';
+import { AuthorsService } from '../../Core/Services/authors/authors.service';
 
 interface Book {
   book: {

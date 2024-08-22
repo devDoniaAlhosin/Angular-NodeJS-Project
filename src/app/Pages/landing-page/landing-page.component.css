@@ -86,7 +86,7 @@ a {
 }
 
 img {
-  height: auto;
+  height: fit-content;
 }
 
 input,
@@ -299,10 +299,11 @@ body {
     .login--contents {
       width: 40%;
       /* background-color: blue; */
-      padding: 1rem;
+      padding: 3rem;
       .newAccountBox {
         width: 100%;
-        margin: 14px 6px 0 0;
+        /* margin: 14px 6px 0 0; */
+        margin: -110px 6px 0 0;
         font-family: "Merriweather", "Georgia", serif;
         float: right;
         position: sticky;
@@ -495,15 +496,87 @@ body {
   }
 }
 
+/* Start Author */
+/*-----------------------------------*\
+  #AUTHOR
+\*-----------------------------------*/
+
+.author {
+}
+
+.author .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  /* padding: 1.5rem; */
+
+  h1 {
+    text-align: center;
+    color: var(--chinese-violet_30);
+    border-bottom: 3px solid hsl(203, 30%, 26%);
+    width: 100%;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+}
+.author-banner {
+  width: 100%;
+
+  height: 60%;
+  img {
+    height: 100%;
+  }
+}
+.all--authors-container {
+  display: flex;
+  gap: 2rem;
+}
+.single--author--container {
+  width: calc((100% / 3) - 2rem);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  height: fit-content;
+  height: 643px;
+  overflow: hidden;
+}
+
+.author :is(.section-subtitle, .section-title) {
+  text-align: left;
+}
+
+.author-content {
+  background-color: var(--white);
+  padding: 17px;
+}
+
+.author-name {
+  font-size: var(--fs-6);
+  margin-block-end: 16px;
+  color: var(--secondary-color);
+}
+
+.author .section-text {
+  font-size: unset;
+}
+/* End Authors */
 /* Start Benefits  */
 .benefits .section-text {
   text-align: center;
   margin-block: 8px 25px;
 }
 .main--benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  .benefits--items {
+    width: calc((100% / 5) - 0.5rem);
+  }
 }
 .benefits-content {
-  width: 50%;
+  width: 30%;
 }
 .benefits-card {
   padding: 25px;
@@ -565,6 +638,7 @@ body {
 
 .benefits-card .card-title {
   margin-block: 20px 15px;
+  height: 108px;
 }
 
 .benefits-card .btn-link {
@@ -574,10 +648,6 @@ body {
   width: 85%;
 }
 /* End Benefits  */
-
-/* Start Carsual  */
-
-/* End Carsual */
 
 /* Media  */
 @media screen and (min-width: 576px) {

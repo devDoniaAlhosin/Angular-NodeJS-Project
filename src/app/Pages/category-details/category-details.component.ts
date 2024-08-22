@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BookService } from './single-category.service';
 import { forkJoin, Subscription } from 'rxjs';
-import { AuthorsService } from '../../core/services/authors/authors.service';
+import { AuthorsService } from '../../Core/Services/authors/authors.service';
 
 export interface Author {
   _id: any;
