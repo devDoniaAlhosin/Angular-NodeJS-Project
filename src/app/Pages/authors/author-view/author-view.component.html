@@ -1,18 +1,91 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <div class="author-cover col-lg-3 col-md-6 col-12">
-      <img [src]="author?.image" alt="" />
+      <img [src]="author?.image" alt="" class="object-fit-cover" />
     </div>
-    <div class="author-details col-lg-9 col-md-6 col-12 p-lg-3 p-4">
+    <div class="author-details col-lg-9 col-md-6 col-12 px-lg-5 p-4">
       <h2 class="author-title">{{ author?.name }}</h2>
-      <h5 class="author-birthdate my-3">
-        Date of Birth: {{ formatDate(author?.birthDate) }}
-      </h5>
+      <div class="author-birthdate my-3">
+        <span class="fw-bold">Born: </span>
+        <span class="text-capitalize">{{ formatDate(author?.birthDate) }}</span>
+      </div>
+      <p class="author-description w-75">{{ author?.bio }}</p>
 
-      <p class="author-description">{{ author?.bio }}</p>
-    </div>
-    <div class="author-reviews col-12 mt-5 border rounded position-relative">
-      <h5 class="author-review-header border rounded">author's books</h5>
+      <div class="author-books mt-5 border position-relative">
+        <p class="author-books-header border rounded text-uppercase fw-bold">
+          {{ author?.name }}'s Books
+        </p>
+        <div class="books-container">
+          <div class="book row py-3 mb-4" *ngFor="let book of author?.books">
+            <div class="book-cover col-1" (click)="onProductClick(book._id)">
+              <img class="w-100" [src]="book.image" alt="" />
+            </div>
+            <div class="book-details col-9" (click)="onProductClick(book._id)">
+              <h5 class="text-capitalize book-title fw-bold">
+                {{ book.title }}
+              </h5>
+              <div class="rating d-flex">
+                <app-star-rating
+                  [rating]="book?.rating"
+                  [readonly]="false"
+                ></app-star-rating>
+
+                <p class="ms-2 rating-numbers">
+                  {{ book?.rating }} - 300 ratings
+                </p>
+              </div>
+            </div>
+            <div
+              class="book-controls col-2 d-flex flex-column align-items-center"
+            >
+              <div class="btn-group">
+                <button class="btn btn-success" type="button">
+                  {{ selectedStatus | titlecase }}
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="visually-hidden">Toggle Dropend</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="onStatusChange(book._id, 'finished')"
+                      >Finished
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="onStatusChange(book._id, 'reading')"
+                      >Reading
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      (click)="onStatusChange(book._id, 'not read')"
+                      >Not Read</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <p class="rate-message m-0">rate this book</p>
+              <div class="user-rating">
+                <app-star-rating
+                  [rating]="userRating || 0"
+                  [readonly]="false"
+                  (ratingChange)="onRatingChange(book._id, $event)"
+                ></app-star-rating>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -26,6 +26,8 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     title: 'GoodReads | Home ',
+    canActivate: [RoleGuard],
+    data: { expectedRole: 'USER' },
   },
   { path: 'login', component: LoginComponent, title: 'GoodReads | Login ' },
   {

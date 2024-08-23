@@ -5,17 +5,63 @@
 }
 
 .author-title {
+  font-size: 40px;
+  letter-spacing: 2px;
   font-weight: bold;
 }
 
-.author-reviews {
+.author-books {
   padding: 3rem 2rem;
   padding-bottom: 0;
 }
 
-.author-review-header {
+.author-books-header {
   position: absolute;
   top: -22px;
   padding: 10px 1rem;
   background-color: var(--white-color);
+  font-size: 14px;
+}
+
+/* ================ book styles ================ */
+.book:not(:nth-last-child(1)) {
+  border-bottom: 1px solid #eee;
+}
+
+.book-title {
+  letter-spacing: 1px;
+}
+
+.book-cover,
+.book-details {
+  cursor: pointer;
+}
+
+.book-cover:hover ~ .book-details .book-title,
+.book-details:hover .book-title {
+  color: var(--hover-color);
+}
+
+.book-details .rating-numbers {
+  font-size: 14px;
+  color: #666;
+}
+
+.book-controls button {
+  font-size: 14px;
+  position: relative;
+}
+
+.dropdown-item {
+  transition: 0.3s all ease;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--hover-color);
+    color: #fff;
+  }
+}
+
+.rate-message {
+  font-size: 14px;
+  color: #999;
 }

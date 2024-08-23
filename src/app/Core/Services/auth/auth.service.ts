@@ -61,6 +61,17 @@ export class AuthService {
       );
   }
 
+  getUserRatingForBook(userId: any, bookId: string): Observable<number | null> {
+    const url = `${this.baseUrl}/${userId}/books`;
+    return this.http.get<{ rating: number | null }>(url).pipe(
+      map((response) => response.rating),
+      catchError((error) => {
+        console.error('Failed to fetch user rating', error);
+        return of(null);
+      })
+    );
+  }
+
   setBookRateAndStatus(
     userId: string,
     bookId: string,
@@ -69,8 +80,6 @@ export class AuthService {
   ): Observable<any> {
     const url = `${this.baseUrl}/${userId}/books/${bookId}`;
     const body = { rating, status };
-
-    console.log('Sending request with body:', body); // Log the request body
 
     return this.http.post(url, body);
   }
