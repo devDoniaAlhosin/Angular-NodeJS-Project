@@ -9,7 +9,7 @@
   background-image: url("../../../../../public/images/tan-bg-texture.jpg");
   background-position: center;
   background-size: cover;
-  height: 120vh;
+  height: 180vh;
   width: 100%;
   padding: 7rem 0;
   margin-bottom: 11rem;
@@ -86,6 +86,7 @@
   color: black;
 }
 .footer-image {
+  margin-top: 10rem;
   position: absolute;
   bottom: 0;
   left: 0;

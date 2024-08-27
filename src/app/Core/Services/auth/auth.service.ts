@@ -31,11 +31,10 @@ export class AuthService {
     this.getUsername()
   );
   public username$ = this.usernameSubject.asObservable();
-
+  
   register(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, userData);
   }
-
   login(username: string, password: string): Observable<LoginResponse> {
     return this.http
       .post<LoginResponse>(`${this.baseUrl}/login`, { username, password })
