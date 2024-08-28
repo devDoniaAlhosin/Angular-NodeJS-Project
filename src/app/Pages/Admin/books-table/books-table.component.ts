@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BookService } from '../../../core/AdminServices/book-services.service';
+import { BookService } from '../../../Core/AdminServices/book-services.service';
 import { Books } from '../../../Shared/models/booksInterface';
 import { FormsModule } from '@angular/forms';
 
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './books-table.component.html',
-  styleUrls: ['./books-table.component.css']
+  styleUrls: ['./books-table.component.css'],
 })
 export class BooksTableComponent {
   books: Books[] = [];
@@ -32,30 +32,37 @@ export class BooksTableComponent {
 
   // Load books from the backend
   loadBooks() {
-    this.booksService.getBooks().subscribe((data) => {
-      this.books = data.map((book: any) => ({
-        ...book,
-        genre: book.genre.map((g: any) => typeof g === 'object' ? g._id : g),
-        author: book.author.map((a: any) => typeof a === 'object' ? a._id : a),
-      }));
-    },
-    (error) => {
-      console.error('Error fetching books:', error);
-    });
+    this.booksService.getBooks().subscribe(
+      (data) => {
+        this.books = data.map((book: any) => ({
+          ...book,
+          genre: book.genre.map((g: any) =>
+            typeof g === 'object' ? g._id : g
+          ),
+          author: book.author.map((a: any) =>
+            typeof a === 'object' ? a._id : a
+          ),
+        }));
+      },
+      (error) => {
+        console.error('Error fetching books:', error);
+      }
+    );
   }
   // Open the update form with the selected book
   onUpdate(book: Books): void {
     this.selectedBook = { ...book };
   }
 
-
-
   onSubmitUpdate(): void {
     if (this.selectedBook) {
-      console.log(this.selectedBook)
+      console.log(this.selectedBook);
       // Ensure `author` is an array
       if (!Array.isArray(this.selectedBook.author)) {
-        if (typeof this.selectedBook.author === 'string' || typeof this.selectedBook.author === 'object') {
+        if (
+          typeof this.selectedBook.author === 'string' ||
+          typeof this.selectedBook.author === 'object'
+        ) {
           this.selectedBook.author = [this.selectedBook.author];
         } else {
           this.selectedBook.author = [];
@@ -64,7 +71,10 @@ export class BooksTableComponent {
 
       // Ensure `genre` is an array
       if (!Array.isArray(this.selectedBook.genre)) {
-        if (typeof this.selectedBook.genre === 'string' || typeof this.selectedBook.genre === 'object') {
+        if (
+          typeof this.selectedBook.genre === 'string' ||
+          typeof this.selectedBook.genre === 'object'
+        ) {
           this.selectedBook.genre = [this.selectedBook.genre];
         } else {
           this.selectedBook.genre = [];
@@ -72,8 +82,12 @@ export class BooksTableComponent {
       }
 
       // Convert author and genre to arrays of strings (ObjectIds)
-      this.selectedBook.author = this.selectedBook.author.map((a: any) => typeof a === 'string' ? a : a._id);
-      this.selectedBook.genre = this.selectedBook.genre.map((g: any) => typeof g === 'string' ? g : g._id);
+      this.selectedBook.author = this.selectedBook.author.map((a: any) =>
+        typeof a === 'string' ? a : a._id
+      );
+      this.selectedBook.genre = this.selectedBook.genre.map((g: any) =>
+        typeof g === 'string' ? g : g._id
+      );
 
       // Call the updateBook service
       this.booksService.updateBook(this.selectedBook).subscribe(
@@ -89,7 +103,6 @@ export class BooksTableComponent {
     }
   }
 
-
   // Cancel the update
   cancelUpdate() {
     this.selectedBook = null;
@@ -102,7 +115,7 @@ export class BooksTableComponent {
       return;
     }
     this.booksService.deleteBook(_id).subscribe(() => {
-      this.books = this.books.filter(b => b._id !== _id);
+      this.books = this.books.filter((b) => b._id !== _id);
     });
   }
 
@@ -121,7 +134,6 @@ export class BooksTableComponent {
       image: '',
     };
   }
-
 
   onAddBook(): void {
     // Ensure `author` and `genre` are arrays
@@ -145,29 +157,34 @@ export class BooksTableComponent {
     );
   }
 
-
   // Convert comma-separated string input to an array of strings
   convertToArray(input: string): string[] {
-    return input.split(',').map(item => item.trim()).filter(item => item !== '');
+    return input
+      .split(',')
+      .map((item) => item.trim())
+      .filter((item) => item !== '');
   }
 
-//  isLastGenre method
-isLastGenre(genreId: string): boolean {
-  if (this.selectedBook?.genre && this.selectedBook.genre.length) {
-    // Directly compare the strings
-    return this.selectedBook.genre[this.selectedBook.genre.length - 1] === genreId;
+  //  isLastGenre method
+  isLastGenre(genreId: string): boolean {
+    if (this.selectedBook?.genre && this.selectedBook.genre.length) {
+      // Directly compare the strings
+      return (
+        this.selectedBook.genre[this.selectedBook.genre.length - 1] === genreId
+      );
+    }
+    return false; // Default to false if selectedBook or selectedBook.genre is undefined or empty
   }
-  return false; // Default to false if selectedBook or selectedBook.genre is undefined or empty
-}
 
-
-// isLastAuthor method
-isLastAuthor(authorId: string): boolean {
-  if (this.selectedBook?.author && this.selectedBook.author.length) {
-    // Directly compare the strings
-    return this.selectedBook.author[this.selectedBook.author.length - 1] === authorId;
+  // isLastAuthor method
+  isLastAuthor(authorId: string): boolean {
+    if (this.selectedBook?.author && this.selectedBook.author.length) {
+      // Directly compare the strings
+      return (
+        this.selectedBook.author[this.selectedBook.author.length - 1] ===
+        authorId
+      );
+    }
+    return false; // Default to false if selectedBook or selectedBook.author is undefined or empty
   }
-  return false; // Default to false if selectedBook or selectedBook.author is undefined or empty
-}
-
 }
