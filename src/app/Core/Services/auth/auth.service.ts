@@ -150,27 +150,25 @@ export class AuthService {
         return null;
       }
     }
-    return null; // Return null if there's no token
+    return null;
   }
   getUserData(): any {
-    const userData = localStorage.getItem('userData');
-    if (userData) {
-      try {
-        return JSON.parse(userData);
-      } catch (error) {
-        console.error('Error parsing user data from localStorage:', error);
-        return null;
-      }
-    } else {
-      // Optionally fetch user data from token if not found in localStorage
-      const tokenUserData = this.getUserDataFromToken();
-      if (tokenUserData) {
-        // Optionally store the fetched data in localStorage
-        this.storeUserData(tokenUserData);
-      }
-      return tokenUserData;
+    // const userData = localStorage.getItem('userData');
+    // if (userData) {
+    //   try {
+    //     return JSON.parse(userData);
+    //   } catch (error) {
+    //     console.error('Error parsing user data from localStorage:', error);
+    //     return null;
+    //   }
+    // } else {
+    const tokenUserData = this.getUserDataFromToken();
+    if (tokenUserData) {
+      this.storeUserData(tokenUserData);
     }
+    return tokenUserData;
   }
+  // }
 
   isLoggedIn(): boolean {
     return !!this.getToken();
