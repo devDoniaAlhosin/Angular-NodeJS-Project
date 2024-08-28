@@ -9,10 +9,10 @@
   background-image: url("../../../../../public/images/tan-bg-texture.jpg");
   background-position: center;
   background-size: cover;
-  height: 180vh;
+  height: 190vh;
   width: 100%;
   padding: 7rem 0;
-  margin-bottom: 11rem;
+  /* margin-bottom: 11rem; */
 }
 .login--container {
   width: 50%;
