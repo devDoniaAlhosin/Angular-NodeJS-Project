@@ -7,7 +7,7 @@ import { Author } from '../../Shared/Models/models';
   providedIn: 'root',
 })
 export class GenreService {
-  private baseUrl = 'http://localhost:3000/api/genres';
+  private baseUrl = 'https://node-js-server-side.vercel.app/api/genres';
 
   constructor(private http: HttpClient) {}
 

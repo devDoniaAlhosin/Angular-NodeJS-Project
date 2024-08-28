@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
     console.log('AuthService instantiated');
   }
-  private baseUrl = 'http://localhost:3000/api/users';
+  private baseUrl = 'https://node-js-server-side.vercel.app/api/users';
 
   fetchUserBooks(userId: string) {
     return this.http.get<{ status: string; data: any[] }>(

@@ -5,10 +5,10 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GenresServiceService {
-  private apiUrl = 'http://localhost:3000/api/genres';
+  private apiUrl = 'https://node-js-server-side.vercel.app/api/genres';
 
   constructor(private http: HttpClient) {}
 
@@ -16,19 +16,18 @@ export class GenresServiceService {
     return this.http.get<Genre[]>(this.apiUrl);
   }
 
-  addGenre(genre: Omit<Genre, '_id'>):
-   Observable<Genre> {
+  addGenre(genre: Omit<Genre, '_id'>): Observable<Genre> {
     return this.http.post<Genre>(this.apiUrl, genre).pipe(
-      catchError(error => {
+      catchError((error) => {
         console.error('Error adding genre:', error);
         return throwError(() => new Error('Error adding genre'));
       })
     );
   }
-//test to be like authors
+  //test to be like authors
   updateGenre(_id: string, genreData: any): Observable<any> {
     return this.http.patch<any>(`${this.apiUrl}/${_id}`, genreData).pipe(
-      catchError(error => {
+      catchError((error) => {
         console.error('Error updating genre:', error);
         return throwError(() => new Error('Error updating genre'));
       })
@@ -37,7 +36,7 @@ export class GenresServiceService {
 
   deleteGenre(_id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${_id}`).pipe(
-      catchError(error => {
+      catchError((error) => {
         console.error('Error deleting genre:', error);
         return throwError(() => new Error('Error deleting genre'));
       })

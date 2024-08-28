@@ -4,20 +4,20 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Author } from '../../Shared/models/authorsInterface';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthorsServiceService {
-  private apiUrl = 'http://localhost:3000/api/authors';
+  private apiUrl = 'https://node-js-server-side.vercel.app/api/authors';
 
-  constructor(private http: HttpClient) { }
-  
-   // Method to get all authors
-   getAuthors(): Observable<any[]> {
+  constructor(private http: HttpClient) {}
+
+  // Method to get all authors
+  getAuthors(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
   addAuthor(author: Omit<Author, '_id'>): Observable<Author> {
     return this.http.post<Author>(this.apiUrl, author).pipe(
-      catchError(error => {
+      catchError((error) => {
         console.error('Error adding author:', error);
         return throwError(() => new Error('Error adding author'));
       })
@@ -38,6 +38,3 @@ export class AuthorsServiceService {
     return this.http.delete<any>(`${this.apiUrl}/${_id}`);
   }
 }
-
-
-

@@ -18,7 +18,7 @@ export class BookService {
   fetchUserBooks(userId: any) {
     throw new Error('Method not implemented.');
   }
-  private apiUrl = 'http://localhost:3000/api/books';
+  private apiUrl = 'https://node-js-server-side.vercel.app/api/books';
 
   constructor(private http: HttpClient) {}
 

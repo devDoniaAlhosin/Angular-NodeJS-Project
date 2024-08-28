@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthorsService {
-  private baseUrl = 'http://localhost:3000/api/authors';
+  private baseUrl = 'https://node-js-server-side.vercel.app/api/authors';
 
   constructor(private http: HttpClient) {}
 
