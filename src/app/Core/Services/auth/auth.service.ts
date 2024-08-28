@@ -31,7 +31,7 @@ export class AuthService {
     this.getUsername()
   );
   public username$ = this.usernameSubject.asObservable();
-  
+
   register(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, userData);
   }
@@ -152,24 +152,22 @@ export class AuthService {
     return null; // Return null if there's no token
   }
   getUserData(): any {
-    const userData = localStorage.getItem('userData');
-    if (userData) {
-      try {
-        return JSON.parse(userData);
-      } catch (error) {
-        console.error('Error parsing user data from localStorage:', error);
-        return null;
-      }
-    } else {
-      // Optionally fetch user data from token if not found in localStorage
-      const tokenUserData = this.getUserDataFromToken();
-      if (tokenUserData) {
-        // Optionally store the fetched data in localStorage
-        this.storeUserData(tokenUserData);
-      }
-      return tokenUserData;
+    // const userData = localStorage.getItem('userData');
+    // if (userData) {
+    //   try {
+    //     return JSON.parse(userData);
+    //   } catch (error) {
+    //     console.error('Error parsing user data from localStorage:', error);
+    //     return null;
+    //   }
+    // } else {
+    const tokenUserData = this.getUserDataFromToken();
+    if (tokenUserData) {
+      this.storeUserData(tokenUserData);
     }
+    return tokenUserData;
   }
+  // }
 
   isLoggedIn(): boolean {
     return !!this.getToken();
