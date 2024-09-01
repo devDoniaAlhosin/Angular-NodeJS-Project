@@ -458,13 +458,15 @@ body {
   /* padding: 1.5rem; */
 
   h1 {
+    color: #2e4756;
+    font-family: Philosopher, sans-serif;
+    line-height: 1.2;
     text-align: center;
-    color: var(--chinese-violet_30);
+
     border-bottom: 3px solid hsl(203, 30%, 26%);
     width: 100%;
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
-    font-weight: 600;
   }
 }
 .author-banner {
@@ -478,6 +480,7 @@ body {
 .all--authors-container {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 .single--author--container {
   width: calc((100% / 3) - 2rem);
@@ -624,6 +627,31 @@ body {
       .hero-content {
         width: 100% !important;
       }
+    }
+  }
+}
+
+@media (max-width: 567px) {
+  .header--container {
+    .login--container {
+      top: 18%;
+      right: 9%;
+      .login--contents {
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+  .single--author--container {
+    width: 100%;
+  }
+
+  .main--benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    .benefits--items {
+      width: calc((100% / 2) - 0.25rem);
     }
   }
 }
